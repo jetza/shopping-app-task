@@ -3,6 +3,7 @@ import LoginPage from '@/pages/Login/LoginPage';
 import ProductsPage from '@/pages/Products/ProductsPage';
 import CartPage from '@/pages/Cart/CartPage';
 import ProductDetailsPage from '@/pages/Products/ProductDetailsPage';
+import NotFoundPage from '@/pages/NotFound/NotFoundPage';
 
 const AppRoutes = () => (
   <Routes>
@@ -11,6 +12,7 @@ const AppRoutes = () => (
     <Route path="/products" element={<ProductsPage />} />
     <Route path="/products/:id" element={<ProductDetailsPage />} />
     <Route path="/cart" element={<CartPage />} />
+    <Route path="*" element={<NotFoundPage />} />
   </Routes>
 );
 

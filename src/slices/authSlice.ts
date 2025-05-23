@@ -16,6 +16,7 @@ const authSlice = createSlice({
       state.isAuthenticated = true;
     },
     logout: (state) => {
+      localStorage.removeItem('cart');
       state.isAuthenticated = false;
     },
   },
