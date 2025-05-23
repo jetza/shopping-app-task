@@ -1,7 +1,14 @@
 export interface Product {
-  id: string;
-  name: string;
+  id: number;
+  title: string;
   price: number;
+  description: string;
+  category: string;
   image: string;
-  description?: string;
+}
+
+export interface ApiResponse {
+  id: number;
+  userId: number;
+  products: Product[];
 }
