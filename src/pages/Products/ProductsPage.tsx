@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import useFetch from '../../hooks/useFetch';
-import { fetchAllProducts } from '../../api/productsAPI';
-import type { Product } from '../../types/product';
+import useFetch from '@/hooks/useFetch';
+import { fetchAllProducts } from '@/api/productsAPI';
+import type { Product } from '@/types/product';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../../slices/cartSlice';
+import { addToCart } from '@/slices/cartSlice';
 import './ProductsPage.module.scss';
 
 const ProductsPage = () => {
