@@ -1,14 +1,544 @@
-.cart-icon {
-  position: relative;
+@use '@/styles/global.scss' as *;
 
+@keyframes shrink-bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.92);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes slideInNavItem {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.header {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 5px;
+  width: 100%;
+  z-index: 1000;
+  background: $color-white;
+  color: $color-gray-dark;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid $color-gray-mid;
+  font-family: $font-title;
+
+  &__left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    .header__logo {
+      color: $color-gray-dark;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-family: $font-title;
+      text-decoration: none;
+      transition:
+        color 0.2s,
+        transform 0.2s cubic-bezier(0.4, 0.2, 0.2, 1);
+      will-change: transform;
+      .logo-placeholder {
+        letter-spacing: 2px;
+      }
+      transform: scale(1);
+      &:not(:hover) {
+        animation: shrink-bounce 0.32s cubic-bezier(0.4, 0.2, 0.2, 1);
+      }
+      &:hover {
+        color: $color-green-accent;
+        transform: scale(1.12);
+      }
+    }
+  }
+
+  &__center {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    a {
+      color: $color-gray-dark;
+      font-family: $font-title-light;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition:
+        color 0.2s,
+        transform 0.2s cubic-bezier(0.4, 0.2, 0.2, 1);
+      will-change: transform;
+      transform: scale(1);
+      &:not(:hover) {
+        animation: shrink-bounce 0.32s cubic-bezier(0.4, 0.2, 0.2, 1);
+      }
+      &:hover {
+        color: $color-green-accent;
+        transform: scale(1.12);
+      }
+    }
+  }
+
+  &__right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.2rem;
+
+    .header__search {
+      display: flex;
+      align-items: center;
+      position: relative;
+      .searchInput {
+        width: 150px;
+        padding: 0.3rem 40px 0.3rem 0.9rem;
+        border: 2px solid $color-gray-mid;
+        border-radius: 6px;
+        font-family: $font-title-light;
+        font-size: $font-size-sm;
+        color: $color-gray-mid;
+        background: $color-white;
+        outline: none;
+        transition: border 0.2s;
+        &::placeholder {
+          color: $color-gray-mid;
+          opacity: 1;
+          font-family: $font-title-light;
+          font-size: $font-size-sm;
+        }
+        &:focus {
+          border-color: $color-gray-mid;
+        }
+      }
+      .searchIconBtn {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: $color-gray-mid;
+        border: none;
+        border-radius: 4px;
+        width: 32px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s;
+        svg {
+          color: $color-white;
+          font-size: $font-size-lg;
+          margin: 0;
+        }
+      }
+    }
+
+    .header__lang {
+      font-family: $font-title-light;
+      font-size: $font-size-base;
+      color: $color-gray-mid;
+      background: $color-white;
+      border: 2px solid $color-gray-mid;
+      border-radius: 4px;
+      padding: 0.2rem 0.7rem;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      outline: none;
+      cursor: pointer;
+      option {
+        font-family: $font-title-light;
+        font-size: $font-size-base;
+        color: $color-gray-dark;
+      }
+    }
+
+    .cartIcon,
+    .userIcon {
+      position: relative;
+      color: $color-gray-dark;
+      font-size: $font-size-icons;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s;
+      &:hover {
+        color: $color-green-accent;
+      }
+      svg,
+      .icon {
+        font-size: clamp(1.2rem, 2vw, 1.6rem);
+        transition: color 0.2s;
+      }
+    }
+
+    .cartIcon {
+      margin-left: 0.4rem;
+    }
+    .userIcon {
+      margin-left: 0.7rem;
+    }
+  }
+}
+
+.badge {
+  position: absolute;
+  top: -12px;
+  right: -14px;
+  background: $color-gray-mid;
+  color: $color-white;
+  border-radius: 50%;
+  border: 1px solid $color-white;
+  font-size: $font-size-sm;
+  font-family: $font-title-light;
+  min-width: 16px;
+  text-align: center;
+  line-height: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  padding: 3px;
+  height: 16px;
+  width: 16px;
+}
+.hamburger {
+  display: none;
+  background: $color-white;
+  border: none;
+  box-shadow: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  padding: 0;
+  z-index: 3;
+  &:focus {
+    outline: none;
+  }
+  svg {
+    color: $color-gray-dark;
+    font-size: $font-size-icons;
+  }
+}
+
+.menuModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 50vh;
+  background: rgba(52, 62, 61, 0.97);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  animation: fadeIn 0.6s;
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+.menuModalFadeOut {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+.menuClose {
+  position: absolute;
+  top: 0.5rem;
+  right: 1.9rem;
+  background: none;
+  border: none;
+  color: $color-white;
+  font-size: 2rem;
+  z-index: 2;
+}
+.menuModalNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.2rem;
+  a {
+    color: $color-white;
+    font-family: $font-title-light;
+    font-size: $font-size-lg;
+    text-decoration: none;
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: slideInNavItem 0.5s forwards;
+  }
+  a:nth-child(1) {
+    animation-delay: 0.08s;
+  }
+  a:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  a:nth-child(3) {
+    animation-delay: 0.32s;
+  }
+  a:nth-child(4) {
+    animation-delay: 0.44s;
+  }
+  a:nth-child(5) {
+    animation-delay: 0.56s;
+  }
+}
+.searchModalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s;
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+.searchModalFadeOut {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+.searchModalBox {
+  background: $color-white;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.18);
+  padding: 2rem 1.5rem 2rem 1.5rem;
+  width: 90vw;
+  max-width: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.searchModalClose {
+  position: absolute;
+  top: 1.7rem;
+  right: 1.3rem;
+  background: none;
+  border: none;
+  color: $color-gray-mid;
+  font-size: $font-size-xxl;
+  cursor: pointer;
+  transition: color 0.2s;
+  &:hover {
+    color: $color-gray-dark;
+  }
+}
+
+.searchModalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.searchModalLabel {
+  font-family: $font-title;
+  font-size: $font-size-lg;
+  color: $color-gray-dark;
+  margin-bottom: 0.7rem;
+}
+.searchModalInput {
+  border: 1.5px solid $color-gray-mid;
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  font-size: $font-size-base;
+  font-family: $font-title-light;
+  color: $color-gray-dark;
+  outline: none;
+  transition: border 0.2s;
+  &::placeholder {
+    color: $color-gray-mid;
+    opacity: 1;
+    font-family: $font-title-light;
+    font-size: $font-size-base;
+  }
+  &:focus {
+    border-color: $color-gray-mid;
+  }
+}
+.searchModalSubmit {
+  background: $color-gray-mid;
+  color: $color-white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 0;
+  font-family: $font-title;
+  font-size: $font-size-base;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  &:hover {
+    background: $color-gray-dark;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 1100px) {
+  .header__right .searchInput {
+    width: 110px;
+  }
+  .header__right .header__search .searchIconBtn {
+    height: 28px;
+    width: 28px;
+  }
+  .header__center a {
+    font-size: $font-size-base;
+    gap: 1.2rem;
+  }
+  .header__right {
+    gap: 1rem;
+  }
   .badge {
-    position: absolute;
-    top: -5px;
-    right: -10px;
-    background-color: red;
-    color: white;
-    font-size: 12px;
-    border-radius: 50%;
-    padding: 2px 6px;
+    font-size: $font-size-sm;
+    min-width: 14px;
+    line-height: 14px;
+    height: 14px;
+    width: 14px;
+    padding: 2px;
+    top: -11px;
+    right: -11px;
+  }
+}
+@media (max-width: 1000px) {
+  .header__center a {
+    font-size: $font-size-sm;
+    gap: 0.8rem;
+    padding: 0 0.2rem;
+  }
+  .header__right {
+    gap: 0.7rem;
+  }
+}
+@media (max-width: 950px) {
+  .header__center {
+    gap: 0.7rem;
+  }
+  .header__center a {
+    font-size: $font-size-sm;
+    padding: 0 0.05rem;
+    letter-spacing: 0.5px;
+  }
+  .header__right {
+    gap: 0.3rem;
+    .searchInput {
+      height: 16px;
+      padding: 0.2rem 32px 0.2rem 0.6rem;
+      font-size: $font-size-sm;
+    }
+    .header__lang {
+      height: 28px;
+      padding: 0.1rem 0.5rem;
+      font-size: $font-size-sm;
+    }
+  }
+  .header__right .header__search .searchIconBtn {
+    width: 28px;
+    height: 28px;
+  }
+  .badge {
+    font-size: $font-size-xs;
+    min-width: 12px;
+    line-height: 8px;
+    height: 12px;
+    width: 12px;
+    padding: 1.5px;
+    top: -9px;
+    right: -9px;
+  }
+}
+@media (max-width: 900px) {
+  .header__center a {
+    font-size: $font-size-sm;
+    gap: 0.5rem;
+    padding: 0 0.1rem;
+  }
+  .header__right {
+    gap: 0.4rem;
+  }
+}
+@media (max-width: 800px) {
+  .header__center {
+    display: none;
+  }
+  .header__right .searchInput {
+    display: none;
+  }
+  .header__right .header__search .searchIconBtn {
+    background: none;
+    svg {
+      color: $color-gray-dark;
+      font-size: 1.2rem;
+    }
+  }
+  .header__right .header__lang {
+    display: none;
+  }
+  .header__left {
+    justify-content: flex-start;
+    .header__logo {
+      position: absolute;
+      left: 45%;
+      transform: translateX(-50%);
+      z-index: 2;
+      animation: none;
+      transition: none;
+      transform: none;
+    }
+    .hamburger {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      margin-right: 0.5rem;
+      z-index: 3;
+    }
+  }
+  .header__logo:hover,
+  .header__center a:hover,
+  .cartIcon:hover,
+  .userIcon:hover {
+    color: inherit !important;
+    transform: none !important;
+    background: none !important;
+    animation: none !important;
   }
 }

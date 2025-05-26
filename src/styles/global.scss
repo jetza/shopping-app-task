@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap');
+
+$color-gray-dark: #343e3d;
+$color-gray-mid: #607466;
+$color-green-mid: #aedcce;
+$color-green-light: #7bd389;
+$color-green-accent: #38e4ae;
+$color-black: #111;
+$color-white: #fff;
+
+$font-title: 'Bebas Neue', Arial, sans-serif;
+$font-title-light: 'Barlow', Arial, sans-serif;
+$font-text: 'Roboto', Arial, sans-serif;
+
+$font-size-base: 1rem;
+$font-size-sm: 0.9rem;
+$font-size-lg: 1.1rem;
+$font-size-xxl: 2rem;
+$font-size-icons: 1.6rem;
+$font-size-xs: 0.7rem;
+
+// body {
+//   background: $color-white;
+//   color: $color-gray-dark;
+//   font-family: $font-text;
+//   margin: 0;
+//   padding: 0;
+// }
+
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+//   color: $color-gray-mid;
+//   font-family: $font-title;
+//   letter-spacing: 1px;
+//   margin-top: 0;
+// }
+
+// .subtitle,
+// .subheading {
+//   color: $color-green-light;
+//   font-family: $font-title-light;
+// }
+
+// a {
+//   color: $color-green-accent;
+//   text-decoration: none;
+//   transition: color 0.2s;
+//   &:hover {
+//     color: $color-green-light;
+//   }
+// }
