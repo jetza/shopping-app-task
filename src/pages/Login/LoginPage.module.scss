@@ -1,0 +1,10 @@
+@use '@/styles/global.scss' as *;
+
+.loginTitle {
+  text-align: center;
+  font-family: $font-title;
+  font-size: $font-size-xxl;
+  color: $color-green-accent;
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+}

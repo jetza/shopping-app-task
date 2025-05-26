@@ -3,7 +3,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../../slices/authSlice';
+import { login } from '@/slices/authSlice';
+import styles from './LoginForm.module.scss';
 
 const schema = z.object({
   username: z.string().min(1, 'Username is required'),
@@ -34,7 +35,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.loginForm}>
       <div>
         <label>Username</label>
         <input {...register('username')} />
