@@ -54,6 +54,18 @@
   }
 }
 
+@keyframes shrink-bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.92);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .menuModalNav a:nth-child(1) {
   animation-delay: 0.08s;
 }
