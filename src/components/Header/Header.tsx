@@ -13,7 +13,7 @@ import {
 import styles from './Header.module.scss';
 import HeaderNav from '@/components/HeaderNav/HeaderNav';
 import Search from '@/components/Search/Search';
-import { useDevice } from '@/contexts/DeviceContext';
+import useDevice from '@/contexts/useDevice';
 import { logout } from '@/slices/authSlice';
 import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher';
 
@@ -24,7 +24,6 @@ const Header = () => {
   const cartItemsCount = useSelector((state: RootState) =>
     state.cart.items.reduce((sum, item) => sum + item.quantity, 0),
   );
-  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
   const [menuClosing, setMenuClosing] = useState(false);

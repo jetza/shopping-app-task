@@ -1,13 +1,8 @@
 /* @refresh reset */
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { createContext, useEffect, useState, type ReactNode } from 'react';
 
-type DeviceContextType = { isMobile: boolean };
-
-const DeviceContext = createContext<DeviceContextType>({ isMobile: false });
-
-function useDevice() {
-  return useContext(DeviceContext);
-}
+export type DeviceContextType = { isMobile: boolean };
+export const DeviceContext = createContext<DeviceContextType>({ isMobile: false });
 
 function DeviceProvider({ children }: { children: ReactNode }) {
   const [isMobile, setIsMobile] = useState(
@@ -23,4 +18,4 @@ function DeviceProvider({ children }: { children: ReactNode }) {
   return <DeviceContext.Provider value={{ isMobile }}>{children}</DeviceContext.Provider>;
 }
 
-export { useDevice, DeviceProvider };
+export { DeviceProvider };
