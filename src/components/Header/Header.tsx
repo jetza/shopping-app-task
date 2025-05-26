@@ -11,6 +11,7 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 import styles from './Header.module.scss';
+import HeaderNav from '../HeaderNav/HeaderNav';
 
 const Header = () => {
   const location = useLocation();
@@ -53,11 +54,7 @@ const Header = () => {
         </Link>
       </div>
 
-      <nav className={styles.header__center}>
-        <Link to="/news">News</Link>
-        <Link to="/categories">Categories</Link>
-        <Link to="/new-arrivals">New Arrivals</Link>
-      </nav>
+      <HeaderNav isModal={false} className={styles.header__center} />
 
       <div className={styles.header__right}>
         <div className={styles.header__search}>
@@ -104,17 +101,7 @@ const Header = () => {
           >
             <FontAwesomeIcon icon={faTimes} size="sm" />
           </button>
-          <nav className={styles.menuModalNav}>
-            <Link to="/news" onClick={() => setMenuOpen(false)}>
-              News
-            </Link>
-            <Link to="/categories" onClick={() => setMenuOpen(false)}>
-              Categories
-            </Link>
-            <Link to="/new-arrivals" onClick={() => setMenuOpen(false)}>
-              New Arrivals
-            </Link>
-          </nav>
+          <HeaderNav isModal={true} onLinkClick={() => setMenuOpen(false)} />
         </div>
       )}
 
