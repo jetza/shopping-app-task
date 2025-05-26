@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useFetch = <T>(fetchFunction: () => Promise<T>) => {
+const useFetch = <T = unknown>(fetchFunction: () => Promise<T>) => {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -12,8 +12,8 @@ const useFetch = <T>(fetchFunction: () => Promise<T>) => {
       try {
         const res = await fetchFunction();
         setData(res);
-      } catch (err: any) {
-        setError(err?.message || 'Unknown error');
+      } catch (err: unknown) {
+        setError((err as Error)?.message || 'Unknown error');
       } finally {
         setLoading(false);
       }
