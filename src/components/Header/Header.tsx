@@ -3,15 +3,10 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '@/store/store';
 import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faShoppingCart,
-  faUser,
-  faSearch,
-  faBars,
-  faTimes,
-} from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faUser, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import styles from './Header.module.scss';
-import HeaderNav from '../HeaderNav/HeaderNav';
+import HeaderNav from '@/components/HeaderNav/HeaderNav';
+import Search from '@/components/Search/Search';
 
 const Header = () => {
   const location = useLocation();
@@ -57,23 +52,12 @@ const Header = () => {
       <HeaderNav isModal={false} className={styles.header__center} />
 
       <div className={styles.header__right}>
-        <div className={styles.header__search}>
-          <input
-            type="text"
-            placeholder="Search products..."
-            className={styles.searchInput}
-            aria-label="Search"
-          />
-          <button
-            className={styles.searchIconBtn}
-            aria-label="Search"
-            onClick={() => {
-              if (window.innerWidth <= 768) setSearchModalOpen(true);
-            }}
-          >
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
-        </div>
+        <Search
+          isMobile={false}
+          onOpenModal={() => {
+            if (window.innerWidth <= 768) setSearchModalOpen(true);
+          }}
+        />
         <select className={styles.header__lang} aria-label="Language">
           <option value="en">EN</option>
           <option value="sr">SR</option>
@@ -107,50 +91,11 @@ const Header = () => {
 
       {/* Search modal for mobile */}
       {searchModalOpen && (
-        <div
-          className={styles.searchModalOverlay}
-          onClick={(e) => {
-            if (e.target === e.currentTarget) setSearchModalOpen(false);
-          }}
-        >
-          <div className={styles.searchModalBox}>
-            <button
-              className={styles.searchModalClose}
-              aria-label="Close search modal"
-              onClick={() => setSearchModalOpen(false)}
-            >
-              <FontAwesomeIcon icon={faTimes} size="xs" />
-            </button>
-            <form
-              className={styles.searchModalForm}
-              role="search"
-              aria-label="Site search"
-              aria-describedby="search-desc"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSearchModalOpen(false);
-              }}
-            >
-              <span id="search-desc" className="sr-only">
-                Type your search and press submit to find products.
-              </span>
-              <label htmlFor="search-input" className={styles.searchModalLabel}>
-                Search all products
-              </label>
-              <input
-                id="search-input"
-                type="text"
-                className={styles.searchModalInput}
-                placeholder="Type to search..."
-                autoComplete="off"
-                aria-required="true"
-              />
-              <button type="submit" className={styles.searchModalSubmit} aria-label="Submit search">
-                Submit
-              </button>
-            </form>
-          </div>
-        </div>
+        <Search
+          isMobile={true}
+          isModalOpen={searchModalOpen}
+          onCloseModal={() => setSearchModalOpen(false)}
+        />
       )}
     </header>
   );
