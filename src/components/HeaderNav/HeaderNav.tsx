@@ -4,11 +4,11 @@ import styles from './HeaderNav.module.scss';
 interface HeaderNavProps {
   onLinkClick?: () => void;
   className?: string;
-  isModal?: boolean;
+  isMobile?: boolean;
 }
 
-const HeaderNav = ({ onLinkClick, className = '', isModal = false }: HeaderNavProps) => (
-  <nav className={`${isModal ? styles.menuModalNav : styles.headerNav} ${className}`}>
+const HeaderNav = ({ onLinkClick, className = '', isMobile = false }: HeaderNavProps) => (
+  <nav className={`${isMobile ? styles.menuModalNav : styles.headerNav} ${className}`}>
     <Link to="/news" onClick={onLinkClick}>
       News
     </Link>

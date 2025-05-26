@@ -7,6 +7,7 @@ import { faShoppingCart, faUser, faBars, faTimes } from '@fortawesome/free-solid
 import styles from './Header.module.scss';
 import HeaderNav from '@/components/HeaderNav/HeaderNav';
 import Search from '@/components/Search/Search';
+import { useDevice } from '@/contexts/DeviceContext';
 
 const Header = () => {
   const location = useLocation();
@@ -17,6 +18,7 @@ const Header = () => {
   const [menuVisible, setMenuVisible] = useState(false);
   const [menuClosing, setMenuClosing] = useState(false);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
+  const { isMobile } = useDevice();
 
   useEffect(() => {
     if (menuOpen) {
@@ -49,13 +51,13 @@ const Header = () => {
         </Link>
       </div>
 
-      <HeaderNav isModal={false} className={styles.header__center} />
+      <HeaderNav isMobile={isMobile} className={styles.header__center} />
 
       <div className={styles.header__right}>
         <Search
-          isMobile={false}
+          isMobile={isMobile}
           onOpenModal={() => {
-            if (window.innerWidth <= 768) setSearchModalOpen(true);
+            if (!isMobile) setSearchModalOpen(true);
           }}
         />
         <select className={styles.header__lang} aria-label="Language">
@@ -85,7 +87,7 @@ const Header = () => {
           >
             <FontAwesomeIcon icon={faTimes} size="sm" />
           </button>
-          <HeaderNav isModal={true} onLinkClick={() => setMenuOpen(false)} />
+          <HeaderNav isMobile={true} onLinkClick={() => setMenuOpen(false)} />
         </div>
       )}
 
