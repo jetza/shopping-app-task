@@ -1,0 +1,33 @@
+@use '@/styles/global.scss' as *;
+
+.langmenu__lang {
+  font-family: $font-title-light;
+  font-size: $font-size-base;
+  color: $color-gray-mid;
+  background: $color-white;
+  border: 2px solid $color-gray-mid;
+  border-radius: 4px;
+  padding: 0.2rem 0.7rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  outline: none;
+  cursor: pointer;
+  option {
+    font-family: $font-title-light;
+    font-size: $font-size-base;
+    color: $color-gray-dark;
+  }
+}
+
+@media (max-width: 900px) {
+  .langmenu__lang {
+    height: 28px;
+    padding: 0.1rem 0.5rem;
+    font-size: $font-size-sm;
+  }
+}
+@media (max-width: 800px) {
+  .langmenu__lang {
+    display: none;
+  }
+}
