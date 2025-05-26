@@ -8,7 +8,6 @@ import styles from './Header.module.scss';
 import HeaderNav from '@/components/HeaderNav/HeaderNav';
 import Search from '@/components/Search/Search';
 import { useDevice } from '@/contexts/DeviceContext';
-import LangMenu from '@/components/LangMenu/LangMenu';
 
 const Header = () => {
   const location = useLocation();
@@ -61,7 +60,6 @@ const Header = () => {
             if (!isMobile) setSearchModalOpen(true);
           }}
         />
-        <LangMenu isMobile={isMobile} />
         <Link to="/cart" className={styles.cartIcon}>
           <FontAwesomeIcon icon={faShoppingCart} className={styles.icon} />
           {cartItemsCount > 0 && <span className={styles.badge}>{cartItemsCount}</span>}

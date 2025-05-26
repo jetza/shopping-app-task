@@ -1,11 +1,6 @@
 import styles from './LangMenu.module.scss';
 
-interface LangMenuProps {
-  isMobile?: boolean;
-}
-
-const LangMenu = ({ isMobile = false }: LangMenuProps) => {
-  if (isMobile) return null;
+const LangMenu = () => {
   return (
     <select className={styles.langmenu__lang} aria-label="Language">
       <option value="en">EN</option>
