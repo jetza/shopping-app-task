@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import styles from './ProductCard.module.scss';
 import type { Product } from '../../types/product';
 
@@ -8,6 +9,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, onClick }: ProductCardProps) => {
+  const { t } = useTranslation();
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseLeave = () => {
@@ -47,14 +49,17 @@ const ProductCard = ({ product, onClick }: ProductCardProps) => {
       />
       <div className={styles.productInfo}>
         <h2 className={styles.productName}>{product.title}</h2>
-        <p className={styles.productPrice} aria-label={`Price: $${product.price.toFixed(2)}`}>
-          ${product.price.toFixed(2)}
+        <p
+          className={styles.productPrice}
+          aria-label={t('productCard.priceAria', { price: product.price.toFixed(2) })}
+        >
+          {t('productCard.price', { price: product.price.toFixed(2) })}
         </p>
         {product.description && (
           <p
             className={styles.productDescription}
             id={`product-desc-${product.id}`}
-            aria-label="Product description"
+            aria-label={t('productCard.descriptionAria')}
           >
             {product.description}
           </p>

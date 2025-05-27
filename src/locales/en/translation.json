@@ -1,0 +1,115 @@
+{
+  "notFound": {
+    "title": "404",
+    "text": "Oops! Looks like you wandered into the digital jungle.",
+    "hint": "The page you are looking for does not exist.",
+    "back": "Back to home"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty.",
+    "regionLabel": "Shopping cart",
+    "items": "Cart items",
+    "itemLabel": "Product: {{title}}, Quantity: {{quantity}}, Price: ${{price}}",
+    "price": "$ {{price}}",
+    "quantity": "Qty: {{quantity}}",
+    "actions": "Actions for {{title}}",
+    "decrease": "Decrease quantity of {{title}}",
+    "increase": "Increase quantity of {{title}}",
+    "remove": "Remove {{title}} from cart",
+    "removeBtn": "Remove",
+    "totalLabel": "Total price: ${{total}}",
+    "total": "Total: ${{total}}",
+    "clearLabel": "Clear entire cart",
+    "clear": "Clear cart"
+  },
+  "footer": {
+    "regionLabel": "Site footer",
+    "copyrightAria": "Copyright",
+    "storeName": "STORE",
+    "rights": " All rights reserved.",
+    "langMenuAria": "Language selector"
+  },
+  "headerNav": {
+    "regionLabel": "Main navigation",
+    "news": "News",
+    "newsAria": "Go to news page",
+    "categories": "Categories",
+    "categoriesAria": "Go to categories page",
+    "newArrivals": "New Arrivals",
+    "newArrivalsAria": "Go to new arrivals page"
+  },
+  "loader": {
+    "loading": "Loading..."
+  },
+  "langMenu": {
+    "ariaLabel": "Select language",
+    "english": "EN",
+    "englishAria": "English",
+    "serbian": "SR",
+    "serbianAria": "Serbian"
+  },
+  "loginForm": {
+    "formAria": "Login form",
+    "username": "Username",
+    "password": "Password",
+    "usernameRequired": "Username is required",
+    "passwordRequired": "Password is required",
+    "loginBtn": "Login",
+    "loginBtnAria": "Login",
+    "wrongCredentials": "Wrong credentials"
+  },
+  "productCard": {
+    "price": "$ {{price}}",
+    "priceAria": "Price: ${{price}}",
+    "descriptionAria": "Product description"
+  },
+  "productDetail": {
+    "category": "Category",
+    "addToCart": "Add to Cart",
+    "addToCartAria": "Add to cart",
+    "error": "Error fetching product details."
+  },
+  "search": {
+    "modalAria": "Search modal",
+    "closeAria": "Close search modal",
+    "formAria": "Site search",
+    "srHint": "Type your search and press submit to find products.",
+    "label": "Search all products",
+    "placeholder": "Type to search...",
+    "inputAria": "Search products",
+    "submitAria": "Submit search",
+    "submit": "Submit",
+    "headerAria": "Header search",
+    "headerPlaceholder": "Search products...",
+    "openModalAria": "Open search modal"
+  },
+  "themeSwitcher": {
+    "regionLabel": "Theme switcher",
+    "light": "Light theme",
+    "dark": "Dark theme",
+    "toggle": "Toggle dark mode",
+    "switchToLight": "Switch to light theme",
+    "switchToDark": "Switch to dark theme"
+  },
+  "loginPage": {
+    "title": "Login to STORE"
+  },
+  "productsPage": {
+    "error": "Error fetching products."
+  },
+  "logout": "Logout",
+  "logoutModal": {
+    "closeAria": "Close logout modal"
+  },
+  "header": {
+    "openMenuAria": "Open menu",
+    "logo": "STORE",
+    "logoAria": "Go to home page",
+    "cartAria": "View cart",
+    "cartBadgeAria": "Cart items: {{count}}",
+    "openLogoutAria": "Open logout modal",
+    "menuAria": "Main menu",
+    "closeMenuAria": "Close menu"
+  }
+}

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import styles from './Cart.module.scss';
 import type { CartItem } from '@/slices/cartSlice';
 
@@ -18,25 +19,30 @@ const Cart = ({
   removeFromCart,
   clearCart,
 }: CartProps) => {
+  const { t } = useTranslation();
   if (items.length === 0)
     return (
       <p className={styles.cartTitle} role="status" aria-live="polite">
-        Cart is empty
+        {t('cart.empty')}
       </p>
     );
 
   return (
-    <div className={styles.cartContainer} role="region" aria-label="Shopping cart">
-      <h2 className={styles.cartTitle} tabIndex={0} aria-label="Your Cart">
-        Your Cart
+    <div className={styles.cartContainer} role="region" aria-label={t('cart.regionLabel')}>
+      <h2 className={styles.cartTitle} tabIndex={0} aria-label={t('cart.title')}>
+        {t('cart.title')}
       </h2>
-      <ul className={styles.cartList} role="list" aria-label="Cart items">
+      <ul className={styles.cartList} role="list" aria-label={t('cart.items')}>
         {items.map((item) => (
           <li
             key={item.id}
             className={styles.cartItem}
             role="listitem"
-            aria-label={`Product: ${item.title}, Quantity: ${item.quantity}, Price: $${item.price}`}
+            aria-label={t('cart.itemLabel', {
+              title: item.title,
+              quantity: item.quantity,
+              price: item.price,
+            })}
           >
             <img
               src={item.image}
@@ -46,45 +52,54 @@ const Cart = ({
             />
             <div className={styles.cartItemInfo}>
               <span className={styles.cartItemTitle}>{item.title}</span>
-              <span className={styles.cartItemPrice} aria-label={`Price: $${item.price}`}>
-                ${item.price}
+              <span
+                className={styles.cartItemPrice}
+                aria-label={t('cart.price', { price: item.price })}
+              >
+                {t('cart.price', { price: item.price })}
               </span>
-              <span className={styles.cartItemQuantity} aria-label={`Quantity: ${item.quantity}`}>
-                Qty: {item.quantity}
+              <span
+                className={styles.cartItemQuantity}
+                aria-label={t('cart.quantity', { quantity: item.quantity })}
+              >
+                {t('cart.quantity', { quantity: item.quantity })}
               </span>
             </div>
             <div
               className={styles.cartItemActions}
               role="group"
-              aria-label={`Actions for ${item.title}`}
+              aria-label={t('cart.actions', { title: item.title })}
             >
               <button
                 onClick={() => decreaseQuantity(item.id)}
-                aria-label={`Decrease quantity of ${item.title}`}
+                aria-label={t('cart.decrease', { title: item.title })}
               >
                 -
               </button>
               <button
                 onClick={() => increaseQuantity(item.id)}
-                aria-label={`Increase quantity of ${item.title}`}
+                aria-label={t('cart.increase', { title: item.title })}
               >
                 +
               </button>
               <button
                 onClick={() => removeFromCart(String(item.id))}
-                aria-label={`Remove ${item.title} from cart`}
+                aria-label={t('cart.remove', { title: item.title })}
               >
-                Remove
+                {t('cart.removeBtn')}
               </button>
             </div>
           </li>
         ))}
       </ul>
-      <h3 className={styles.cartTotal} aria-label={`Total price: $${total.toFixed(2)}`}>
-        Total: {total.toFixed(2)} $
+      <h3
+        className={styles.cartTotal}
+        aria-label={t('cart.totalLabel', { total: total.toFixed(2) })}
+      >
+        {t('cart.total', { total: total.toFixed(2) })}
       </h3>
-      <button className={styles.clearCartBtn} onClick={clearCart} aria-label="Clear entire cart">
-        Clear cart
+      <button className={styles.clearCartBtn} onClick={clearCart} aria-label={t('cart.clearLabel')}>
+        {t('cart.clear')}
       </button>
     </div>
   );

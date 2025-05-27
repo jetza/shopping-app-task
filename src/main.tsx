@@ -5,8 +5,8 @@ import { Provider, useSelector } from 'react-redux';
 import { store } from '@/store/store';
 import type { RootState } from '@/store/store';
 import './styles/global.scss';
+import './i18n';
 
-// Komponenta koja reaguje na promenu teme u Redux-u
 function ThemeWrapper() {
   const theme = useSelector((state: RootState) => state.theme.current);
 
@@ -18,7 +18,6 @@ function ThemeWrapper() {
   return <App />;
 }
 
-// Render aplikacije
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>

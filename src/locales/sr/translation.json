@@ -1,0 +1,115 @@
+{
+  "notFound": {
+    "title": "404",
+    "text": "Ups! Izgleda da ste zalutali u digitalnu džunglu.",
+    "hint": "Stranica koju tražite ne postoji.",
+    "back": "Vrati se na početnu"
+  },
+  "cart": {
+    "title": "Vaša korpa",
+    "empty": "Vaša korpa je prazna.",
+    "regionLabel": "Korpa za kupovinu",
+    "items": "Stavke u korpi",
+    "itemLabel": "Proizvod: {{title}}, Količina: {{quantity}}, Cena: {{price}} RSD",
+    "price": "{{price}} RSD",
+    "quantity": "Kom: {{quantity}}",
+    "actions": "Akcije za {{title}}",
+    "decrease": "Smanji količinu za {{title}}",
+    "increase": "Povećaj količinu za {{title}}",
+    "remove": "Ukloni {{title}} iz korpe",
+    "removeBtn": "Ukloni",
+    "totalLabel": "Ukupna cena: {{total}} RSD",
+    "total": "Ukupno: {{total}} RSD",
+    "clearLabel": "Isprazni celu korpu",
+    "clear": "Isprazni korpu"
+  },
+  "footer": {
+    "regionLabel": "Podnožje sajta",
+    "copyrightAria": "Autorska prava",
+    "storeName": "STORE",
+    "rights": " Sva prava zadržana.",
+    "langMenuAria": "Izbor jezika"
+  },
+  "headerNav": {
+    "regionLabel": "Glavna navigacija",
+    "news": "Vesti",
+    "newsAria": "Idi na stranicu vesti",
+    "categories": "Kategorije",
+    "categoriesAria": "Idi na stranicu kategorija",
+    "newArrivals": "Novi proizvodi",
+    "newArrivalsAria": "Idi na stranicu novih proizvoda"
+  },
+  "loader": {
+    "loading": "Učitavanje..."
+  },
+  "langMenu": {
+    "ariaLabel": "Izaberi jezik",
+    "english": "EN",
+    "englishAria": "Engleski",
+    "serbian": "SR",
+    "serbianAria": "Srpski"
+  },
+  "loginForm": {
+    "formAria": "Prijavni formular",
+    "username": "Korisničko ime",
+    "password": "Lozinka",
+    "usernameRequired": "Korisničko ime je obavezno",
+    "passwordRequired": "Lozinka je obavezna",
+    "loginBtn": "Prijavi se",
+    "loginBtnAria": "Prijava",
+    "wrongCredentials": "Pogrešni podaci"
+  },
+  "loginPage": {
+    "title": "Prijava na STORE"
+  },
+  "productCard": {
+    "price": "{{price}} RSD",
+    "priceAria": "Cena: {{price}} RSD",
+    "descriptionAria": "Opis proizvoda"
+  },
+  "productDetail": {
+    "category": "Kategorija",
+    "addToCart": "Dodaj u korpu",
+    "addToCartAria": "Dodaj u korpu",
+    "error": "Greška pri učitavanju detalja proizvoda."
+  },
+  "search": {
+    "modalAria": "Pretraga modal",
+    "closeAria": "Zatvori prozor za pretragu",
+    "formAria": "Pretraga sajta",
+    "srHint": "Unesite pojam i pritisnite pošalji za pretragu proizvoda.",
+    "label": "Pretraži sve proizvode",
+    "placeholder": "Kucajte za pretragu...",
+    "inputAria": "Pretraga proizvoda",
+    "submitAria": "Pošalji pretragu",
+    "submit": "Pošalji",
+    "headerAria": "Pretraga u zaglavlju",
+    "headerPlaceholder": "Pretraži proizvode...",
+    "openModalAria": "Otvori prozor za pretragu"
+  },
+  "themeSwitcher": {
+    "regionLabel": "Promena teme",
+    "light": "Svetla tema",
+    "dark": "Tamna tema",
+    "toggle": "Uključi/isključi tamni režim",
+    "switchToLight": "Prebaci na svetlu temu",
+    "switchToDark": "Prebaci na tamnu temu"
+  },
+  "productsPage": {
+    "error": "Greška pri učitavanju proizvoda."
+  },
+  "logout": "Odjavi se",
+  "logoutModal": {
+    "closeAria": "Zatvori prozor za odjavu"
+  },
+  "header": {
+    "openMenuAria": "Otvori meni",
+    "logo": "STORE",
+    "logoAria": "Idi na početnu stranicu",
+    "cartAria": "Pogledaj korpu",
+    "cartBadgeAria": "Stavki u korpi: {{count}}",
+    "openLogoutAria": "Otvori prozor za odjavu",
+    "menuAria": "Glavni meni",
+    "closeMenuAria": "Zatvori meni"
+  }
+}

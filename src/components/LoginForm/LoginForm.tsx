@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login } from '@/slices/authSlice';
+import { useTranslation } from 'react-i18next';
 import styles from './LoginForm.module.scss';
 
 const schema = z.object({
@@ -14,6 +15,8 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const LoginForm = () => {
+  const { t } = useTranslation();
+
   const {
     register,
     handleSubmit,
@@ -30,7 +33,7 @@ const LoginForm = () => {
       dispatch(login());
       navigate('/products');
     } else {
-      alert('Wrong credentials');
+      alert(t('loginForm.wrongCredentials'));
     }
   };
 
@@ -38,12 +41,12 @@ const LoginForm = () => {
     <form
       onSubmit={handleSubmit(onSubmit)}
       className={styles.loginForm}
-      aria-label="Login form"
+      aria-label={t('loginForm.formAria')}
       autoComplete="on"
       role="form"
     >
       <div>
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">{t('loginForm.username')}</label>
         <input
           id="username"
           type="text"
@@ -55,13 +58,13 @@ const LoginForm = () => {
         />
         {errors.username && (
           <p id="username-error" role="alert">
-            {errors.username.message}
+            {t('loginForm.usernameRequired')}
           </p>
         )}
       </div>
 
       <div>
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">{t('loginForm.password')}</label>
         <input
           id="password"
           type="password"
@@ -73,13 +76,13 @@ const LoginForm = () => {
         />
         {errors.password && (
           <p id="password-error" role="alert">
-            {errors.password.message}
+            {t('loginForm.passwordRequired')}
           </p>
         )}
       </div>
 
-      <button type="submit" aria-label="Login">
-        Login
+      <button type="submit" aria-label={t('loginForm.loginBtnAria')}>
+        {t('loginForm.loginBtn')}
       </button>
     </form>
   );

@@ -16,6 +16,7 @@ import Search from '@/components/Search/Search';
 import useDevice from '@/contexts/useDevice';
 import { logout } from '@/slices/authSlice';
 import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
   const location = useLocation();
@@ -30,6 +31,7 @@ const Header = () => {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
   const [logoutModalOpen, setLogoutModalOpen] = useState(false);
   const { isMobile } = useDevice();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (menuOpen) {
@@ -52,7 +54,7 @@ const Header = () => {
       <div className={styles.header__left}>
         <button
           className={styles.hamburger}
-          aria-label="Open menu"
+          aria-label={t('header.openMenuAria')}
           onClick={() => {
             setMenuOpen(true);
             setLogoutModalOpen(false);
@@ -60,8 +62,8 @@ const Header = () => {
         >
           <FontAwesomeIcon icon={faBars} size="xs" />
         </button>
-        <Link to="/products" className={styles.header__logo}>
-          <span className={styles.logoPlaceholder}>STORE</span>
+        <Link to="/products" className={styles.header__logo} aria-label={t('header.logoAria')}>
+          <span className={styles.logoPlaceholder}>{t('header.logo')}</span>
         </Link>
       </div>
 
@@ -76,10 +78,13 @@ const Header = () => {
           }}
           onFocus={() => setLogoutModalOpen(false)}
         />
-        <Link to="/cart" className={styles.cartIcon} aria-label="View cart" role="link">
+        <Link to="/cart" className={styles.cartIcon} aria-label={t('header.cartAria')} role="link">
           <FontAwesomeIcon icon={faShoppingCart} className={styles.icon} aria-hidden="true" />
           {cartItemsCount > 0 && (
-            <span className={styles.badge} aria-label={`Cart items: ${cartItemsCount}`}>
+            <span
+              className={styles.badge}
+              aria-label={t('header.cartBadgeAria', { count: cartItemsCount })}
+            >
               {cartItemsCount}
             </span>
           )}
@@ -88,7 +93,7 @@ const Header = () => {
           <button
             className={styles.userIcon}
             onClick={() => setLogoutModalOpen((open) => !open)}
-            aria-label="Open logout modal"
+            aria-label={t('header.openLogoutAria')}
             aria-haspopup="dialog"
             aria-expanded={logoutModalOpen}
           >
@@ -105,11 +110,11 @@ const Header = () => {
           }
           role="dialog"
           aria-modal="true"
-          aria-label="Main menu"
+          aria-label={t('header.menuAria')}
         >
           <button
             className={styles.menuClose}
-            aria-label="Close menu"
+            aria-label={t('header.closeMenuAria')}
             onClick={() => setMenuOpen(false)}
           >
             <FontAwesomeIcon icon={faTimes} size="sm" aria-hidden="true" />
@@ -139,7 +144,7 @@ const Header = () => {
             <div className={styles.logoutModalBox}>
               <button
                 className={styles.logoutModalClose}
-                aria-label="Close logout modal"
+                aria-label={t('logoutModal.closeAria')}
                 onClick={() => setLogoutModalOpen(false)}
                 style={{ background: 'none', border: 'none', boxShadow: 'none', padding: 0 }}
               >
@@ -155,7 +160,7 @@ const Header = () => {
                     navigate('/login');
                   }}
                 >
-                  Logout
+                  {t('logout')}
                 </button>
               </div>
             </div>
@@ -165,7 +170,7 @@ const Header = () => {
             <div className={styles.logoutPopoverContent}>
               <ThemeSwitcher />
               <button
-                aria-label="Logout"
+                aria-label={t('logout')}
                 type="button"
                 className={styles.logoutPopoverBtn}
                 onClick={() => {
@@ -174,7 +179,7 @@ const Header = () => {
                   navigate('/login');
                 }}
               >
-                Logout
+                {t('logout')}
               </button>
             </div>
           </div>

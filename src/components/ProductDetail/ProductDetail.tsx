@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import styles from './ProductDetail.module.scss';
 import type { Product } from '@/types/product';
 
@@ -7,6 +9,7 @@ interface ProductDetailProps {
 }
 
 const ProductDetail = ({ product, onAddToCart }: ProductDetailProps) => {
+  const { t } = useTranslation();
   if (!product) return null;
   return (
     <section className={styles.productDetail} aria-label={product.title}>
@@ -20,20 +23,28 @@ const ProductDetail = ({ product, onAddToCart }: ProductDetailProps) => {
       </div>
       <div className={styles.productDetailInfo}>
         <h1 className={styles.productDetailTitle}>{product.title}</h1>
-        <p className={styles.productDetailPrice} aria-label={`Price: $${product.price}`}>
-          ${product.price}
+        <p
+          className={styles.productDetailPrice}
+          aria-label={t('productCard.priceAria', { price: product.price })}
+        >
+          {t('productCard.price', { price: product.price })}
         </p>
         <p className={styles.productDetailCategory}>
-          <strong>Category:</strong> {product.category}
+          <strong>{t('productDetail.category')}:</strong> {product.category}
         </p>
-        <p className={styles.productDetailDescription}>{product.description}</p>
+        <p
+          className={styles.productDetailDescription}
+          aria-label={t('productCard.descriptionAria')}
+        >
+          {product.description}
+        </p>
         {onAddToCart && (
           <button
             className={styles.productDetailAddToCart}
             onClick={() => onAddToCart(product)}
-            aria-label="Add to cart"
+            aria-label={t('productDetail.addToCartAria')}
           >
-            Add to Cart
+            {t('productDetail.addToCart')}
           </button>
         )}
       </div>

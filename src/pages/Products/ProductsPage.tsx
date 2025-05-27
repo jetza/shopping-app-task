@@ -5,13 +5,15 @@ import './ProductsPage.module.scss';
 import Products from '@/components/Products/Products';
 import { useNavigate } from 'react-router-dom';
 import Loader from '@/components/Loader/Loader';
+import { useTranslation } from 'react-i18next';
 
 const ProductsPage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { data: products, loading, error } = useFetch<Product[]>(fetchAllProducts);
 
   if (loading) return <Loader />;
-  if (error) return <p>Error: {error}</p>;
+  if (error) return <p>{t('productsPage.error')}</p>;
 
   const mappedProducts = products || [];
 
