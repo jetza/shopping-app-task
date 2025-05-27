@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState, AppDispatch } from '@/store/store';
 import { removeFromCart, clearCart } from '@/slices/cartSlice';
+import Cart from '@/components/Cart/Cart';
 
 const CartPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -11,30 +12,18 @@ const CartPage = () => {
   const increaseQuantity = (id: number) => dispatch({ type: 'cart/addToCart', payload: { id } });
   const decreaseQuantity = (id: number) =>
     dispatch({ type: 'cart/decreaseQuantity', payload: String(id) });
-
-  if (items.length === 0) return <p>Korpa je prazna.</p>;
+  const remove = (id: string) => dispatch(removeFromCart(id));
+  const clear = () => dispatch(clearCart());
 
   return (
-    <div>
-      <h2>Your Cart</h2>
-      <ul>
-        {items.map((item) => (
-          <li key={item.id}>
-            <img src={item.image} alt={item.title} width="50" />
-            <strong>{item.title}</strong> – {item.price} x {item.quantity}
-            <div>
-              <button onClick={() => decreaseQuantity(item.id)}>-</button>
-              <button onClick={() => increaseQuantity(item.id)}>+</button>
-              <button onClick={() => dispatch(removeFromCart(String(item.id)))}>
-                Remove from cart
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <h3>Total: {total.toFixed(2)} $</h3>
-      <button onClick={() => dispatch(clearCart())}>Clear cart</button>
-    </div>
+    <Cart
+      items={items}
+      total={total}
+      increaseQuantity={increaseQuantity}
+      decreaseQuantity={decreaseQuantity}
+      removeFromCart={remove}
+      clearCart={clear}
+    />
   );
 };
 export default CartPage;
