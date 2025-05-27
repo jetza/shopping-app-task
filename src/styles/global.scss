@@ -1,55 +1,79 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap');
 
-$color-gray-dark: #343e3d;
-$color-gray-mid: #607466;
-$color-green-mid: #aedcce;
-$color-green-light: #7bd389;
-$color-green-accent: #38e4ae;
-$color-black: #111;
-$color-white: #fff;
+// CSS custom properties for theme colors
+:root {
+  --color-gray-dark: #343e3d;
+  --color-gray-mid: #607466;
+  --color-green-mid: #aedcce;
+  --color-green-accent: #38e4ae;
+  --color-black: #222;
+  --color-white: #fff;
+  --color-modal: rgba(52, 62, 61, 0.97);
+  --font-title: 'Bebas Neue', Arial, sans-serif;
+  --font-title-light: 'Barlow', Arial, sans-serif;
+  --font-text: 'Roboto', Arial, sans-serif;
+  --font-size-base: 1rem;
+  --font-size-sm: 0.9rem;
+  --font-size-lg: 1.1rem;
+  --font-size-xxl: 2rem;
+  --font-size-icons: 1.6rem;
+  --font-size-xs: 0.7rem;
+}
 
-$font-title: 'Bebas Neue', Arial, sans-serif;
-$font-title-light: 'Barlow', Arial, sans-serif;
-$font-text: 'Roboto', Arial, sans-serif;
+body.light {
+  --background: var(--color-white);
+  --text: var(--color-gray-dark);
+  --text-secondary: var(--color-gray-mid);
 
-$font-size-base: 1rem;
-$font-size-sm: 0.9rem;
-$font-size-lg: 1.1rem;
-$font-size-xxl: 2rem;
-$font-size-icons: 1.6rem;
-$font-size-xs: 0.7rem;
+  --primary: var(--color-green-mid);
+  --primary-hover: var(--color-green-light);
+  --secondary: var(--color-gray-mid);
+  --accent: var(--color-green-accent);
 
-// body {
-//   background: $color-white;
-//   color: $color-gray-dark;
-//   font-family: $font-text;
-//   margin: 0;
-//   padding: 0;
-// }
+  --border: var(--color-gray-mid);
+  --border-light: var(--color-white);
 
-// h1,
-// h2,
-// h3,
-// h4,
-// h5,
-// h6 {
-//   color: $color-gray-mid;
-//   font-family: $font-title;
-//   letter-spacing: 1px;
-//   margin-top: 0;
-// }
+  --hamburger-bg: var(--color-white);
 
-// .subtitle,
-// .subheading {
-//   color: $color-green-light;
-//   font-family: $font-title-light;
-// }
+  --badge-bg: var(--color-gray-mid);
+  --badge-text: var(--color-white);
 
-// a {
-//   color: $color-green-accent;
-//   text-decoration: none;
-//   transition: color 0.2s;
-//   &:hover {
-//     color: $color-green-light;
-//   }
-// }
+  --menu-modal-bg: var(--color-modal);
+  --menu-modal-color: var(--color-white);
+
+  --modal-bg: var(--color-white);
+  --modal-border: 1px solid var(--color-gray-mid);
+  --modal-shadow: 0 4px 32px rgba(0, 0, 0, 0.18);
+}
+
+body.dark {
+  --background: var(--color-black);
+  --text: var(--color-white);
+  --text-secondary: var(--color-green-mid);
+
+  --primary: var(--color-green-mid);
+  --primary-hover: var(--color-green-accent);
+  --secondary: var(--color-gray-mid);
+  --accent: var(--color-green-accent);
+
+  --border: var(--color-gray-mid);
+  --border-light: var(--color-gray-mid);
+
+  --hamburger-bg: var(--color-gray-dark);
+
+  --badge-bg: var(--accent);
+  --badge-text: var(--color-white);
+
+  --menu-modal-bg: var(--color-modal);
+  --menu-modal-color: var(--color-white);
+
+  --modal-bg: var(--color-gray-dark);
+  --modal-border: 1px solid var(--color-white);
+  --modal-shadow: 0 4px 32px rgba(0, 0, 0, 0.32);
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font-text);
+}

@@ -37,24 +37,24 @@
   left: 5px;
   width: 100%;
   z-index: 1000;
-  background: $color-white;
-  color: $color-gray-dark;
+  background: var(--background);
+  color: var(--text);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  border-bottom: 1px solid $color-gray-mid;
-  font-family: $font-title;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-title);
 
   &__left {
     flex: 1;
     display: flex;
     align-items: center;
     .header__logo {
-      color: $color-gray-dark;
+      color: var(--text);
       font-size: clamp(1.4rem, 3vw, 2rem);
-      font-family: $font-title;
+      font-family: var(--font-title);
       text-decoration: none;
       transition:
         color 0.2s,
@@ -68,7 +68,7 @@
         animation: shrink-bounce 0.32s cubic-bezier(0.4, 0.2, 0.2, 1);
       }
       &:hover {
-        color: $color-green-accent;
+        color: var(--accent);
         transform: scale(1.12);
       }
     }
@@ -90,14 +90,14 @@
     .cartIcon,
     .userIcon {
       position: relative;
-      color: $color-gray-dark;
-      font-size: $font-size-icons;
+      color: var(--text);
+      font-size: var(--font-size-icons);
       text-decoration: none;
       display: flex;
       align-items: center;
       transition: color 0.2s;
       &:hover {
-        color: $color-green-accent;
+        color: var(--accent);
       }
       svg,
       .icon {
@@ -124,12 +124,12 @@
   position: absolute;
   top: -12px;
   right: -14px;
-  background: $color-gray-mid;
-  color: $color-white;
+  background: var(--badge-bg);
+  color: var(--badge-text);
   border-radius: 50%;
-  border: 1px solid $color-white;
-  font-size: $font-size-sm;
-  font-family: $font-title-light;
+  border: 1px solid var(--border-light);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-title-light);
   min-width: 16px;
   text-align: center;
   line-height: 16px;
@@ -145,7 +145,7 @@
 }
 .hamburger {
   display: none;
-  background: $color-white;
+  background: var(--hamburger-bg);
   border: none;
   box-shadow: none;
   flex-direction: column;
@@ -160,8 +160,8 @@
     outline: none;
   }
   svg {
-    color: $color-gray-dark;
-    font-size: $font-size-icons;
+    color: var(--text);
+    font-size: var(--font-size-icons);
   }
 }
 
@@ -171,7 +171,7 @@
   left: 0;
   width: 100vw;
   height: 50vh;
-  background: rgba(52, 62, 61, 0.97);
+  background: var(--menu-modal-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -192,7 +192,7 @@
   right: 1.9rem;
   background: none;
   border: none;
-  color: $color-white;
+  color: var(--menu-modal-color);
   font-size: 2rem;
   z-index: 2;
 }
@@ -202,14 +202,17 @@
   align-items: center;
   gap: 2.2rem;
   a {
-    color: $color-white;
-    font-family: $font-title-light;
-    font-size: $font-size-lg;
+    color: var(--menu-modal-color);
+    font-family: var(--font-title-light);
+    font-size: var(--font-size-lg);
     text-decoration: none;
     letter-spacing: 1px;
     opacity: 0;
     transform: translateX(-30px);
     animation: slideInNavItem 0.5s forwards;
+    &:hover {
+      color: var(--accent);
+    }
   }
   a:nth-child(1) {
     animation-delay: 0.08s;
@@ -249,14 +252,14 @@
     width: 28px;
   }
   .header__center a {
-    font-size: $font-size-base;
+    font-size: var(--font-size-base);
     gap: 1.2rem;
   }
   .header__right {
     gap: 1rem;
   }
   .badge {
-    font-size: $font-size-sm;
+    font-size: var(--font-size-sm);
     min-width: 14px;
     line-height: 14px;
     height: 14px;
@@ -268,7 +271,7 @@
 }
 @media (max-width: 1000px) {
   .header__center a {
-    font-size: $font-size-sm;
+    font-size: var(--font-size-sm);
     gap: 0.8rem;
     padding: 0 0.2rem;
   }
@@ -281,7 +284,7 @@
     gap: 0.7rem;
   }
   .header__center a {
-    font-size: $font-size-sm;
+    font-size: var(--font-size-sm);
     padding: 0 0.05rem;
     letter-spacing: 0.5px;
   }
@@ -290,7 +293,7 @@
     .searchInput {
       height: 16px;
       padding: 0.2rem 32px 0.2rem 0.6rem;
-      font-size: $font-size-sm;
+      font-size: var(--font-size-sm);
     }
   }
   .header__right .header__search .searchIconBtn {
@@ -298,7 +301,7 @@
     height: 28px;
   }
   .badge {
-    font-size: $font-size-xs;
+    font-size: var(--font-size-xs);
     min-width: 12px;
     line-height: 8px;
     height: 12px;
@@ -310,7 +313,7 @@
 }
 @media (max-width: 900px) {
   .header__center a {
-    font-size: $font-size-sm;
+    font-size: var(--font-size-sm);
     gap: 0.5rem;
     padding: 0 0.1rem;
   }
@@ -328,7 +331,7 @@
   .header__right .header__search .searchIconBtn {
     background: none;
     svg {
-      color: $color-gray-dark;
+      color: var(--text);
       font-size: 1.2rem;
     }
   }
@@ -371,9 +374,9 @@
   position: absolute;
   top: 60px;
   right: 2rem;
-  background: $color-white;
+  background: var(--modal-bg);
   border-radius: 10px;
-  box-shadow: 0 8px 40px rgba(52, 62, 61, 0.18);
+  box-shadow: var(--menu-modal-bg);
   z-index: 1200;
   min-width: 100px;
   padding: 0.8rem 1rem 0.8rem 1rem;
@@ -386,39 +389,24 @@
   gap: 1.1rem;
 }
 .logoutPopoverBtn {
-  background: $color-green-accent;
-  color: $color-white;
+  background: var(--accent);
+  color: var(--badge-text);
   border: none;
   border-radius: 6px;
   width: 100%;
   padding: 0.6rem 1.2rem;
-  font-family: $font-title;
-  font-size: $font-size-base;
+  font-family: var(--font-title);
+  font-size: var(--font-size-base);
   font-weight: 500;
   cursor: pointer;
   margin-bottom: 0.3rem;
   transition: background 0.2s;
   &:hover {
-    background: $color-gray-mid;
-    color: $color-white;
+    background: var(--secondary);
+    color: var(--badge-text);
   }
 }
-.logoutPopoverCancel {
-  background: none;
-  color: $color-gray-mid;
-  border: none;
-  font-family: $font-title-light;
-  font-size: $font-size-base;
-  cursor: pointer;
-  margin-left: 0.5rem;
-  padding: 0.3rem 0.7rem;
-  border-radius: 6px;
-  transition: background 0.2s;
-  &:hover {
-    background: $color-green-light;
-    color: $color-gray-dark;
-  }
-}
+
 .logoutModalOverlay {
   position: fixed;
   inset: 0;
@@ -432,9 +420,9 @@
   transition: opacity 0.4s;
 }
 .logoutModalBox {
-  background: $color-white;
+  background: var(--modal-bg);
   border-radius: 16px;
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 8px 40px rgba(52, 62, 61, 0.18);
   padding: 2rem 1.5rem 2rem 1.5rem;
   width: 90vw;
   max-width: 340px;
@@ -442,6 +430,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  border: var(--modal-border, none);
 }
 .logoutModalClose {
   position: absolute;
@@ -449,12 +438,12 @@
   right: 1.1rem;
   background: none;
   border: none;
-  color: $color-gray-mid;
-  font-size: $font-size-xxl;
+  color: var(--secondary);
+  font-size: var(--font-size-xxl);
   cursor: pointer;
   transition: color 0.2s;
   &:hover {
-    color: $color-gray-dark;
+    color: var(--text-secondary);
   }
 }
 .logoutModalContent {
@@ -464,19 +453,19 @@
   gap: 1.1rem;
 }
 .logoutModalBtn {
-  background: $color-green-accent;
-  color: $color-white;
+  background: var(--accent);
+  color: var(--badge-text);
   border: none;
   border-radius: 6px;
   padding: 0.7rem 1.2rem;
-  font-family: $font-title;
-  font-size: $font-size-base;
+  font-family: var(--font-title);
+  font-size: var(--font-size-base);
   font-weight: 500;
   cursor: pointer;
   margin-top: 0.5rem;
   transition: background 0.2s;
   &:hover {
-    background: $color-green-light;
-    color: $color-gray-dark;
+    background: var(--primary-hover);
+    color: var(--text);
   }
 }

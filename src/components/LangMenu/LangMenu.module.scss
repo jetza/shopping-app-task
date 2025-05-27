@@ -1,11 +1,11 @@
 @use '@/styles/global.scss' as *;
 
 .langmenu__lang {
-  font-family: $font-title-light;
-  font-size: $font-size-base;
-  color: $color-gray-mid;
-  background: $color-white;
-  border: 2px solid $color-gray-mid;
+  font-family: var(--font-title-light);
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  background: var(--background);
+  border: 2px solid var(--border);
   border-radius: 4px;
   padding: 0.2rem 0.7rem;
   margin-left: 0.5rem;
@@ -13,9 +13,10 @@
   outline: none;
   cursor: pointer;
   option {
-    font-family: $font-title-light;
-    font-size: $font-size-base;
-    color: $color-gray-dark;
+    font-family: var(--font-title-light);
+    font-size: var(--font-size-base);
+    color: var(--text);
+    background: var(--background);
   }
 }
 
@@ -23,6 +24,6 @@
   .langmenu__lang {
     height: 28px;
     padding: 0.1rem 0.5rem;
-    font-size: $font-size-sm;
+    font-size: var(--font-size-sm);
   }
 }

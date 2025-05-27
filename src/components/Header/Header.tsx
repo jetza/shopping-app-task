@@ -53,7 +53,10 @@ const Header = () => {
         <button
           className={styles.hamburger}
           aria-label="Open menu"
-          onClick={() => setMenuOpen(true)}
+          onClick={() => {
+            setMenuOpen(true);
+            setLogoutModalOpen(false);
+          }}
         >
           <FontAwesomeIcon icon={faBars} size="xs" />
         </button>
@@ -151,6 +154,8 @@ const Header = () => {
             <div className={styles.logoutPopoverContent}>
               <ThemeSwitcher />
               <button
+                aria-label="Logout"
+                type="button"
                 className={styles.logoutPopoverBtn}
                 onClick={() => {
                   dispatch(logout());

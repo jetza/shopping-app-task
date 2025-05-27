@@ -2,9 +2,9 @@
 
 .loginTitle {
   text-align: center;
-  font-family: $font-title;
-  font-size: $font-size-xxl;
-  color: $color-green-accent;
+  font-family: var(--font-title);
+  font-size: var(--font-size-xxl);
+  color: var(--accent);
   margin-bottom: 1.5rem;
   letter-spacing: 2px;
 }

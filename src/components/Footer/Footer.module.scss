@@ -11,10 +11,10 @@
   align-items: center;
   padding: 0.4rem 1rem 0.4rem 2rem;
   padding-left: 2rem;
-  background: $color-white;
-  border-top: 1px solid $color-gray-dark;
-  font-size: $font-size-base;
-  font-family: $font-title-light;
+  background: var(--background);
+  border-top: 1px solid var(--border);
+  font-size: var(--font-size-base);
+  font-family: var(--font-title-light);
   min-height: 44px;
 }
 
@@ -29,5 +29,5 @@
 }
 
 .footer__copyright {
-  color: $color-gray-mid;
+  color: var(--text-secondary);
 }

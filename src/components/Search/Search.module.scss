@@ -7,22 +7,22 @@
   .searchInput {
     width: 150px;
     padding: 0.3rem 40px 0.3rem 0.9rem;
-    border: 2px solid $color-gray-mid;
+    border: 2px solid var(--border);
     border-radius: 6px;
-    font-family: $font-title-light;
-    font-size: $font-size-sm;
-    color: $color-gray-mid;
-    background: $color-white;
+    font-family: var(--font-title-light);
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    background: var(--background);
     outline: none;
     transition: border 0.2s;
     &::placeholder {
-      color: $color-gray-mid;
+      color: var(--text-secondary);
       opacity: 1;
-      font-family: $font-title-light;
-      font-size: $font-size-sm;
+      font-family: var(--font-title-light);
+      font-size: var(--font-size-sm);
     }
     &:focus {
-      border-color: $color-gray-mid;
+      border-color: var(--border);
     }
   }
   .searchIconBtn {
@@ -30,7 +30,7 @@
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    background: $color-gray-mid;
+    background: var(--secondary);
     border: none;
     border-radius: 4px;
     width: 32px;
@@ -41,8 +41,8 @@
     cursor: pointer;
     transition: background 0.2s;
     svg {
-      color: $color-white;
-      font-size: $font-size-lg;
+      color: var(--badge-text);
+      font-size: var(--font-size-lg);
       margin: 0;
     }
   }
@@ -66,9 +66,9 @@
   transition: opacity 0.4s;
 }
 .searchModalBox {
-  background: $color-white;
+  background: var(--modal-bg);
   border-radius: 16px;
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.18);
+  box-shadow: var(--background);
   padding: 2rem 1.5rem 2rem 1.5rem;
   width: 90vw;
   max-width: 400px;
@@ -83,12 +83,12 @@
   right: 1.3rem;
   background: none;
   border: none;
-  color: $color-gray-mid;
-  font-size: $font-size-xxl;
+  color: var(--secondary);
+  font-size: var(--font-size-xxl);
   cursor: pointer;
   transition: color 0.2s;
   &:hover {
-    color: $color-gray-dark;
+    color: var(--text-secondary);
   }
 }
 
@@ -98,43 +98,44 @@
   gap: 1.1rem;
 }
 .searchModalLabel {
-  font-family: $font-title;
-  font-size: $font-size-lg;
-  color: $color-gray-dark;
+  font-family: var(--font-title);
+  font-size: var(--font-size-lg);
+  color: var(--text);
   margin-bottom: 0.7rem;
 }
 .searchModalInput {
-  border: 1.5px solid $color-gray-mid;
+  border: 1.5px solid var(--border);
   border-radius: 6px;
   padding: 0.7rem 1rem;
-  font-size: $font-size-base;
-  font-family: $font-title-light;
-  color: $color-gray-dark;
+  font-size: var(--font-size-base);
+  font-family: var(--font-title-light);
+  color: var(--text);
+  background: var(--background);
   outline: none;
   transition: border 0.2s;
   &::placeholder {
-    color: $color-gray-mid;
+    color: var(--text-secondary);
     opacity: 1;
-    font-family: $font-title-light;
-    font-size: $font-size-base;
+    font-family: var(--font-title-light);
+    font-size: var(--font-size-base);
   }
   &:focus {
-    border-color: $color-gray-mid;
+    border-color: var(--secondary);
   }
 }
 .searchModalSubmit {
-  background: $color-gray-mid;
-  color: $color-white;
+  background: var(--secondary);
+  color: var(--badge-text);
   border: none;
   border-radius: 6px;
   padding: 0.7rem 0;
-  font-family: $font-title;
-  font-size: $font-size-base;
+  font-family: var(--font-title);
+  font-size: var(--font-size-base);
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s;
   &:hover {
-    background: $color-gray-dark;
+    background: var(--text-secondary);
   }
 }
 
@@ -166,7 +167,7 @@
   .header__search .searchIconBtn {
     background: none;
     svg {
-      color: $color-gray-dark;
+      color: var(--text);
       font-size: 1.2rem;
     }
   }

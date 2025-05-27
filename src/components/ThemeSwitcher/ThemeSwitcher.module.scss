@@ -27,7 +27,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: $color-gray-mid;
+  background: var(--secondary);
   border-radius: 24px;
   transition: background 0.3s;
 }
@@ -39,14 +39,14 @@
   width: 18px;
   left: 3px;
   bottom: 3px;
-  background: $color-white;
+  background: var(--background);
   border-radius: 50%;
   transition: transform 0.3s;
   box-shadow: 0 2px 8px rgba(52, 62, 61, 0.1);
 }
 
 .switch input:checked + .slider {
-  background: $color-green-accent;
+  background: var(--accent);
 }
 
 .switch input:checked + .slider:before {
@@ -55,10 +55,10 @@
 
 .themeSwitcher svg {
   font-size: 1.2rem;
-  color: $color-gray-mid;
+  color: var(--secondary);
   transition: color 0.2s;
 }
 
 .themeSwitcher .active {
-  color: $color-green-accent;
+  color: var(--accent);
 }
