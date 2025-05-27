@@ -76,17 +76,23 @@ const Header = () => {
           }}
           onFocus={() => setLogoutModalOpen(false)}
         />
-        <Link to="/cart" className={styles.cartIcon}>
-          <FontAwesomeIcon icon={faShoppingCart} className={styles.icon} />
-          {cartItemsCount > 0 && <span className={styles.badge}>{cartItemsCount}</span>}
+        <Link to="/cart" className={styles.cartIcon} aria-label="View cart" role="link">
+          <FontAwesomeIcon icon={faShoppingCart} className={styles.icon} aria-hidden="true" />
+          {cartItemsCount > 0 && (
+            <span className={styles.badge} aria-label={`Cart items: ${cartItemsCount}`}>
+              {cartItemsCount}
+            </span>
+          )}
         </Link>
         {
           <button
             className={styles.userIcon}
             onClick={() => setLogoutModalOpen((open) => !open)}
             aria-label="Open logout modal"
+            aria-haspopup="dialog"
+            aria-expanded={logoutModalOpen}
           >
-            <FontAwesomeIcon icon={faUser} className={styles.icon} />
+            <FontAwesomeIcon icon={faUser} className={styles.icon} aria-hidden="true" />
           </button>
         }
       </div>
@@ -97,13 +103,16 @@ const Header = () => {
           className={
             menuClosing ? `${styles.menuModal} ${styles.menuModalFadeOut}` : styles.menuModal
           }
+          role="dialog"
+          aria-modal="true"
+          aria-label="Main menu"
         >
           <button
             className={styles.menuClose}
             aria-label="Close menu"
             onClick={() => setMenuOpen(false)}
           >
-            <FontAwesomeIcon icon={faTimes} size="sm" />
+            <FontAwesomeIcon icon={faTimes} size="sm" aria-hidden="true" />
           </button>
           <HeaderNav isMobile={true} onLinkClick={() => setMenuOpen(false)} />
         </div>

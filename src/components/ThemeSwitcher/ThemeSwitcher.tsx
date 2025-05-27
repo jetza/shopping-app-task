@@ -14,18 +14,30 @@ const ThemeSwitcher = () => {
   };
 
   return (
-    <div className={styles.themeSwitcher}>
-      <FontAwesomeIcon icon={faSun} className={theme === 'light' ? styles.active : ''} />
-      <label className={styles.switch}>
+    <div className={styles.themeSwitcher} role="group" aria-label="Theme switcher">
+      <FontAwesomeIcon
+        icon={faSun}
+        className={theme === 'light' ? styles.active : ''}
+        aria-label="Light theme"
+        aria-hidden="false"
+      />
+      <label className={styles.switch} aria-label="Toggle dark mode">
         <input
           type="checkbox"
           checked={theme === 'dark'}
           onChange={handleToggle}
-          aria-label="Toggle theme"
+          aria-checked={theme === 'dark'}
+          aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+          role="switch"
         />
         <span className={styles.slider}></span>
       </label>
-      <FontAwesomeIcon icon={faMoon} className={theme === 'dark' ? styles.active : ''} />
+      <FontAwesomeIcon
+        icon={faMoon}
+        className={theme === 'dark' ? styles.active : ''}
+        aria-label="Dark theme"
+        aria-hidden="false"
+      />
     </div>
   );
 };

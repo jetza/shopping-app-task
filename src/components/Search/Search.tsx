@@ -34,6 +34,9 @@ const Search = ({
         onClick={(e) => {
           if (e.target === e.currentTarget && onCloseModal) onCloseModal();
         }}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search modal"
       >
         <div className={styles.searchModalBox}>
           <button
@@ -41,7 +44,7 @@ const Search = ({
             aria-label="Close search modal"
             onClick={onCloseModal}
           >
-            <FontAwesomeIcon icon={faTimes} size="xs" />
+            <FontAwesomeIcon icon={faTimes} size="xs" aria-hidden="true" />
           </button>
           <form
             className={styles.searchModalForm}
@@ -66,6 +69,7 @@ const Search = ({
               placeholder="Type to search..."
               autoComplete="off"
               aria-required="true"
+              aria-label="Search products"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onFocus={onFocus}
@@ -81,18 +85,18 @@ const Search = ({
   }
 
   return (
-    <div className={styles.header__search}>
+    <div className={styles.header__search} role="search" aria-label="Header search">
       <input
         type="text"
         placeholder="Search products..."
         className={styles.searchInput}
-        aria-label="Search"
+        aria-label="Search products"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onFocus={onFocus}
       />
-      <button className={styles.searchIconBtn} aria-label="Search" onClick={onOpenModal}>
-        <FontAwesomeIcon icon={faSearch} />
+      <button className={styles.searchIconBtn} aria-label="Open search modal" onClick={onOpenModal}>
+        <FontAwesomeIcon icon={faSearch} aria-hidden="true" />
       </button>
     </div>
   );

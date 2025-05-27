@@ -35,20 +35,52 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.loginForm}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={styles.loginForm}
+      aria-label="Login form"
+      autoComplete="on"
+      role="form"
+    >
       <div>
-        <label>Username</label>
-        <input {...register('username')} />
-        {errors.username && <p>{errors.username.message}</p>}
+        <label htmlFor="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          autoComplete="username"
+          aria-required="true"
+          aria-invalid={!!errors.username}
+          aria-describedby={errors.username ? 'username-error' : undefined}
+          {...register('username')}
+        />
+        {errors.username && (
+          <p id="username-error" role="alert">
+            {errors.username.message}
+          </p>
+        )}
       </div>
 
       <div>
-        <label>Password</label>
-        <input type="password" {...register('password')} />
-        {errors.password && <p>{errors.password.message}</p>}
+        <label htmlFor="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          autoComplete="current-password"
+          aria-required="true"
+          aria-invalid={!!errors.password}
+          aria-describedby={errors.password ? 'password-error' : undefined}
+          {...register('password')}
+        />
+        {errors.password && (
+          <p id="password-error" role="alert">
+            {errors.password.message}
+          </p>
+        )}
       </div>
 
-      <button type="submit">Login</button>
+      <button type="submit" aria-label="Login">
+        Login
+      </button>
     </form>
   );
 };

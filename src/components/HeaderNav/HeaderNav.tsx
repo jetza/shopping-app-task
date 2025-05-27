@@ -8,14 +8,18 @@ interface HeaderNavProps {
 }
 
 const HeaderNav = ({ onLinkClick, className = '', isMobile = false }: HeaderNavProps) => (
-  <nav className={`${isMobile ? styles.menuModalNav : styles.headerNav} ${className}`}>
-    <Link to="/news" onClick={onLinkClick}>
+  <nav
+    className={`${isMobile ? styles.menuModalNav : styles.headerNav} ${className}`}
+    aria-label="Main navigation"
+    role="navigation"
+  >
+    <Link to="/news" onClick={onLinkClick} aria-label="Go to news page">
       News
     </Link>
-    <Link to="/categories" onClick={onLinkClick}>
+    <Link to="/categories" onClick={onLinkClick} aria-label="Go to categories page">
       Categories
     </Link>
-    <Link to="/new-arrivals" onClick={onLinkClick}>
+    <Link to="/new-arrivals" onClick={onLinkClick} aria-label="Go to new arrivals page">
       New Arrivals
     </Link>
   </nav>
