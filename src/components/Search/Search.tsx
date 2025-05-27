@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styles from './Search.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -8,10 +8,24 @@ interface SearchProps {
   onOpenModal?: () => void;
   onCloseModal?: () => void;
   isModalOpen?: boolean;
+  onFocus?: () => void;
 }
 
-const Search = ({ isMobile = false, onOpenModal, onCloseModal, isModalOpen }: SearchProps) => {
+const Search = ({
+  isMobile = false,
+  onOpenModal,
+  onCloseModal,
+  isModalOpen,
+  onFocus,
+}: SearchProps) => {
   const [input, setInput] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isMobile && isModalOpen) {
+      inputRef.current?.focus();
+    }
+  }, [isMobile, isModalOpen]);
 
   if (isMobile && isModalOpen) {
     return (
@@ -54,6 +68,8 @@ const Search = ({ isMobile = false, onOpenModal, onCloseModal, isModalOpen }: Se
               aria-required="true"
               value={input}
               onChange={(e) => setInput(e.target.value)}
+              onFocus={onFocus}
+              ref={inputRef}
             />
             <button type="submit" className={styles.searchModalSubmit} aria-label="Submit search">
               Submit
@@ -73,6 +89,7 @@ const Search = ({ isMobile = false, onOpenModal, onCloseModal, isModalOpen }: Se
         aria-label="Search"
         value={input}
         onChange={(e) => setInput(e.target.value)}
+        onFocus={onFocus}
       />
       <button className={styles.searchIconBtn} aria-label="Search" onClick={onOpenModal}>
         <FontAwesomeIcon icon={faSearch} />

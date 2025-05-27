@@ -72,7 +72,9 @@ const Header = () => {
           isMobile={isMobile}
           onOpenModal={() => {
             if (!isMobile) setSearchModalOpen(true);
+            setLogoutModalOpen(false);
           }}
+          onFocus={() => setLogoutModalOpen(false)}
         />
         <Link to="/cart" className={styles.cartIcon}>
           <FontAwesomeIcon icon={faShoppingCart} className={styles.icon} />
