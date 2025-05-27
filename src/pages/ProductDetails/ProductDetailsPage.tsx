@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '@/slices/cartSlice';
 import { useCallback } from 'react';
 import ProductDetail from '@/components/ProductDetail/ProductDetail';
+import Loader from '@/components/Loader/Loader';
 
 const ProductDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -14,7 +15,7 @@ const ProductDetailsPage = () => {
   const fetchProduct = useCallback(() => fetchProductById(id!), [id]);
   const { data: product, loading, error } = useFetch<Product>(fetchProduct);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loader />;
   if (error || !product) return <p>Error fetching product details.</p>;
 
   return <ProductDetail product={product} onAddToCart={() => dispatch(addToCart(product))} />;

@@ -1,0 +1,29 @@
+.loaderOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(52, 62, 61, 0.35); /* posivljeno */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.loaderSpinner {
+  width: 64px;
+  height: 64px;
+  border: 7px solid var(--border);
+  border-top: 7px solid var(--accent);
+  border-radius: 50%;
+  animation: loader-spin 1s linear infinite;
+  background: transparent;
+}
+
+@keyframes loader-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
