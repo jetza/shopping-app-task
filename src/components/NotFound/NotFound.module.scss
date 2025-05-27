@@ -1,0 +1,60 @@
+.notFoundContainer {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background);
+}
+
+.notFoundContent {
+  text-align: center;
+  padding: 2.5rem 1.5rem 2.5rem 1.5rem;
+  background: var(--card-bg, var(--background));
+  border-radius: 18px;
+  box-shadow: 0 2px 24px rgba(56, 228, 174, 0.1);
+  border: 2px solid var(--accent);
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.notFoundTitle {
+  font-size: 6rem;
+  font-family: var(--font-title);
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  letter-spacing: 6px;
+  line-height: 1;
+}
+
+.notFoundText {
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.2rem;
+  font-family: var(--font-title-light);
+}
+
+.notFoundEmoji {
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
+  line-height: 1;
+}
+
+.notFoundHint {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-top: 1.2rem;
+}
+
+.notFoundLink {
+  color: var(--accent);
+  font-weight: bold;
+  text-decoration: underline;
+  font-family: var(--font-title);
+  font-size: 1.35rem;
+  transition: color 0.2s;
+  margin-top: 2.2rem;
+  display: inline-block;
+}
+.notFoundLink:hover {
+  color: var(--secondary);
+}

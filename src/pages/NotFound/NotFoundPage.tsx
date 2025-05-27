@@ -1,8 +1,5 @@
-const NotFoundPage = () => (
-  <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-    <h1>404</h1>
-    <p>Stranica nije pronađena.</p>
-  </div>
-);
+import NotFound from '@/components/NotFound/NotFound';
+
+const NotFoundPage = () => <NotFound />;
 
 export default NotFoundPage;
