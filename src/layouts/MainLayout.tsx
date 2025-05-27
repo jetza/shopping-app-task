@@ -8,7 +8,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main style={{ paddingTop: '90px', minHeight: 'calc(100vh - 44px)' }}>{children}</main>
       {!hideFooter && <Footer />}
     </>
   );
