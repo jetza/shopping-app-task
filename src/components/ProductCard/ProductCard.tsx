@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './ProductCard.module.scss';
 import type { Product } from '../../types/product';
@@ -92,4 +92,4 @@ const ProductCard = ({ product, onDetails, onAddToCart }: ProductCardProps) => {
   );
 };
 
-export default ProductCard;
+export default React.memo(ProductCard);
