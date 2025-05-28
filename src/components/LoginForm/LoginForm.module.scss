@@ -84,8 +84,8 @@
 
 .registerBtn {
   margin-top: 1.2rem;
-  background: var(--gray-dark, #6c757d);
-  color: var(--text-white, #fff);
+  background: var(--color-gray-dark);
+  color: var(--color-white);
   border: none;
   border-radius: 8px;
   padding: 0.8rem 2.2rem;
@@ -93,7 +93,9 @@
   font-size: 1.1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
   display: block;
   width: 100%;
 }

@@ -20,7 +20,19 @@ const Contact = () => {
           </li>
         </ul>
         <p>{t('contact.formInfo')}</p>
-        <form className={styles.contactForm}>
+        <form
+          className={styles.contactForm}
+          onSubmit={(e) => {
+            e.preventDefault();
+            const form = e.currentTarget;
+            const name = (form.elements.namedItem('name') as HTMLInputElement)?.value || '';
+            const email = (form.elements.namedItem('email') as HTMLInputElement)?.value || '';
+            const message =
+              (form.elements.namedItem('message') as HTMLTextAreaElement)?.value || '';
+            const mailto = `mailto:admin@store.com?subject=Contact%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\nMessage: ${message}`)}`;
+            window.location.href = mailto;
+          }}
+        >
           <label htmlFor="name">{t('contact.name')}</label>
           <input
             id="name"

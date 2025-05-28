@@ -53,7 +53,7 @@
   border-radius: 6px;
   transition: background 0.18s;
   &:hover {
-    background: var(--accent-fade, #e6faf5);
+    background: var(--accent-fade, var(--color-green-mid));
     color: var(--accent);
   }
 }
