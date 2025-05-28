@@ -4,6 +4,7 @@ import styles from './Search.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useProductsQuery } from '@/hooks/useProductsQuery';
+import { useNavigate } from 'react-router-dom';
 
 interface SearchProps {
   isMobile?: boolean;
@@ -24,6 +25,7 @@ const Search = ({
   const [input, setInput] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   const { data: products, isLoading, isError } = useProductsQuery();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isMobile && isModalOpen) {
@@ -31,7 +33,6 @@ const Search = ({
     }
   }, [isMobile, isModalOpen]);
 
-  // Filtriraj proizvode po inputu, pretraga tek na 3+ slova
   const filteredProducts =
     input.length >= 3
       ? products?.filter((product) => product.title.toLowerCase().includes(input.toLowerCase())) ||
@@ -102,7 +103,7 @@ const Search = ({
                 role="button"
                 onClick={() => {
                   if (onCloseModal) onCloseModal();
-                  window.location.href = `/products/${product.id}`;
+                  navigate(`/products/${product.id}`);
                 }}
               >
                 <span className={styles.resultTitle}>{product.title}</span>
