@@ -65,7 +65,9 @@
   "productCard": {
     "price": "{{price}} RSD",
     "priceAria": "Cena: {{price}} RSD",
-    "descriptionAria": "Opis proizvoda"
+    "descriptionAria": "Opis proizvoda",
+    "details": "Detalji",
+    "addToCart": "Dodaj u korpu"
   },
   "productDetail": {
     "category": "Kategorija",

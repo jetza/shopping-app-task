@@ -4,13 +4,19 @@ import styles from './Products.module.scss';
 
 interface ProductsProps {
   products: Product[];
-  onProductClick?: (id: string | number) => void;
+  onProductDetails?: (id: string | number) => void;
+  onAddToCart?: (product: Product) => void;
 }
 
-const Products = ({ products, onProductClick }: ProductsProps) => (
+const Products = ({ products, onProductDetails, onAddToCart }: ProductsProps) => (
   <div className={styles.productsGrid}>
     {products.map((product) => (
-      <ProductCard key={product.id} product={product} onClick={onProductClick} />
+      <ProductCard
+        key={product.id}
+        product={product}
+        onDetails={onProductDetails || (() => {})}
+        onAddToCart={onAddToCart || (() => {})}
+      />
     ))}
   </div>
 );

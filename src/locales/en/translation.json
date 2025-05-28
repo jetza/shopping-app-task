@@ -62,7 +62,9 @@
   "productCard": {
     "price": "$ {{price}}",
     "priceAria": "Price: ${{price}}",
-    "descriptionAria": "Product description"
+    "descriptionAria": "Product description",
+    "details": "Details",
+    "addToCart": "Add to Cart"
   },
   "productDetail": {
     "category": "Category",
