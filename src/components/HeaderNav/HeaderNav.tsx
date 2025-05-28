@@ -16,8 +16,8 @@ const HeaderNav = ({ onLinkClick, className = '', isMobile = false }: HeaderNavP
       aria-label={t('headerNav.regionLabel')}
       role="navigation"
     >
-      <Link to="/news" onClick={onLinkClick} aria-label={t('headerNav.newsAria')}>
-        {t('headerNav.news')}
+      <Link to="/brends" onClick={onLinkClick} aria-label={t('headerNav.brendsAria') || 'Brendovi'}>
+        {t('headerNav.brends') || 'Brendovi'}
       </Link>
       <Link to="/categories" onClick={onLinkClick} aria-label={t('headerNav.categoriesAria')}>
         {t('headerNav.categories')}

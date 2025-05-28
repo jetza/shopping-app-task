@@ -7,6 +7,8 @@ import NotFoundPage from '@/pages/NotFound/NotFoundPage';
 import FAQPage from '@/pages/FAQ/FAQPage';
 import ContactPage from '@/pages/Contact/ContactPage';
 import UserSettings from '@/components/UserSettings/UserSettings';
+import BrendsPage from '@/pages/Brends/BrendsPage';
+import NewArrivalsPage from '@/pages/NewArrivals/NewArrivalsPage';
 
 const AppRoutes = () => (
   <Routes>
@@ -18,6 +20,8 @@ const AppRoutes = () => (
     <Route path="/faq" element={<FAQPage />} />
     <Route path="/contact" element={<ContactPage />} />
     <Route path="/settings" element={<UserSettings />} />
+    <Route path="/brends" element={<BrendsPage />} />
+    <Route path="/new-arrivals" element={<NewArrivalsPage />} />
     <Route path="*" element={<NotFoundPage />} />
   </Routes>
 );

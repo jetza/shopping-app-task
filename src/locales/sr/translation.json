@@ -32,12 +32,12 @@
   },
   "headerNav": {
     "regionLabel": "Glavna navigacija",
-    "news": "Vesti",
-    "newsAria": "Idi na stranicu vesti",
     "categories": "Kategorije",
     "categoriesAria": "Idi na stranicu kategorija",
     "newArrivals": "Novi proizvodi",
-    "newArrivalsAria": "Idi na stranicu novih proizvoda"
+    "newArrivalsAria": "Idi na stranicu novih proizvoda",
+    "brends": "Brendovi",
+    "brendsAria": "Idi na stranicu brendova"
   },
   "loader": {
     "loading": "Učitavanje..."
@@ -173,5 +173,10 @@
     "cardExpiryInvalid": "Datum mora biti u formatu MM/YY.",
     "cardNameInvalid": "Ime mora imati bar 2 slova.",
     "passwordsDontMatch": "Lozinke se ne poklapaju."
+  },
+  "comingSoon": {
+    "regionLabel": "Sekcija uskoro dostupna",
+    "title": "Uskoro dostupno",
+    "text": "Stranica sa novim proizvodima uskoro!"
   }
 }

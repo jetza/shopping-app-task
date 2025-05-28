@@ -37,7 +37,9 @@
     "categories": "Categories",
     "categoriesAria": "Go to categories page",
     "newArrivals": "New Arrivals",
-    "newArrivalsAria": "Go to new arrivals page"
+    "newArrivalsAria": "Go to new arrivals page",
+    "brends": "Brands",
+    "brendsAria": "Go to brands page"
   },
   "loader": {
     "loading": "Loading..."
@@ -173,5 +175,10 @@
     "cardExpiryInvalid": "Expiry must be at least 4 characters (MM/YY).",
     "cardNameInvalid": "Name must be at least 2 characters.",
     "passwordsDontMatch": "Passwords do not match."
+  },
+  "comingSoon": {
+    "regionLabel": "Coming soon section",
+    "title": "Coming Soon",
+    "text": "The page with new arrivals is coming soon!"
   }
 }

@@ -1,0 +1,45 @@
+.newsContainer {
+  max-width: 700px;
+  margin: 2.5rem auto;
+  background: var(--card-bg, var(--background));
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(52, 62, 61, 0.1);
+  border: 1.5px solid var(--border);
+  padding: 2.5rem 2rem;
+  font-family: var(--font-title-light);
+  color: var(--text);
+}
+
+.newsTitle {
+  font-size: 2rem;
+  font-family: var(--font-title);
+  color: var(--accent);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.brandList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.brandCard {
+  background: var(--background);
+  border-radius: 10px;
+  box-shadow: 0 1px 8px rgba(52, 62, 61, 0.07);
+  border: 1px solid var(--border);
+  padding: 1.2rem 1rem;
+}
+
+.brandName {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.brandDescription {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+}
