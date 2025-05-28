@@ -149,5 +149,23 @@
     "message": "Message",
     "send": "Send",
     "submit": "Submit"
+  },
+  "userSettings": {
+    "title": "Account Settings",
+    "changePassword": "Change Password",
+    "sendCode": "Send security code to email",
+    "codeSent": "Code sent to email",
+    "enterCode": "Enter security code",
+    "wrongCode": "Incorrect security code.",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password",
+    "savePassword": "Save password",
+    "cards": "Credit cards",
+    "addCard": "Add card",
+    "cardNumber": "Card number",
+    "cardExpiry": "MM/YY",
+    "cardName": "Name on card",
+    "addCardBtn": "Add card",
+    "success": "Password changed successfully!"
   }
 }

@@ -149,5 +149,23 @@
     "message": "Poruka",
     "send": "Pošalji",
     "submit": "Pošalji"
+  },
+  "userSettings": {
+    "title": "Podešavanja naloga",
+    "changePassword": "Promena lozinke",
+    "sendCode": "Pošalji sigurnosni kod na email",
+    "codeSent": "Kod poslat na email",
+    "enterCode": "Unesite sigurnosni kod",
+    "wrongCode": "Pogrešan sigurnosni kod.",
+    "newPassword": "Nova lozinka",
+    "confirmPassword": "Potvrdi lozinku",
+    "savePassword": "Sačuvaj lozinku",
+    "cards": "Kreditne kartice",
+    "addCard": "Dodaj karticu",
+    "cardNumber": "Broj kartice",
+    "cardExpiry": "MM/YY",
+    "cardName": "Ime na kartici",
+    "addCardBtn": "Dodaj karticu",
+    "success": "Lozinka uspešno promenjena!"
   }
 }

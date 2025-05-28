@@ -30,7 +30,7 @@ const LoginForm = () => {
 
   const onSubmit = (data: FormData) => {
     if (data.username === 'admin' && data.password === 'Admin123$') {
-      dispatch(login());
+      dispatch(login(data.username));
       navigate('/products');
     } else {
       alert(t('loginForm.wrongCredentials'));

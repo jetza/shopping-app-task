@@ -11,7 +11,7 @@ const Contact = () => {
         <ul className={styles.contactList}>
           <li>
             <strong>{t('contact.emailLabel')}:</strong>{' '}
-            <a href="mailto:support@store.com">support@store.com</a>
+            <a href="mailto:admin@store.com">admin@store.com</a>
           </li>
           <li>
             <strong>{t('contact.phoneLabel')}:</strong> +381 11 123 4567
@@ -20,9 +20,23 @@ const Contact = () => {
         <p>{t('contact.formInfo')}</p>
         <form className={styles.contactForm}>
           <label htmlFor="name">{t('contact.name')}</label>
-          <input id="name" name="name" type="text" required className={styles.contactInput} />
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            className={styles.contactInput}
+            defaultValue="Admin"
+          />
           <label htmlFor="email">{t('contact.email')}</label>
-          <input id="email" name="email" type="email" required className={styles.contactInput} />
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            className={styles.contactInput}
+            defaultValue="admin@store.com"
+          />
           <label htmlFor="message">{t('contact.message')}</label>
           <textarea
             id="message"

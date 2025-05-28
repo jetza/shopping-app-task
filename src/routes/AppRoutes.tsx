@@ -6,6 +6,7 @@ import ProductDetailsPage from '@/pages/ProductDetails/ProductDetailsPage';
 import NotFoundPage from '@/pages/NotFound/NotFoundPage';
 import FAQPage from '@/pages/FAQ/FAQPage';
 import ContactPage from '@/pages/Contact/ContactPage';
+import UserSettings from '@/components/UserSettings/UserSettings';
 
 const AppRoutes = () => (
   <Routes>
@@ -16,6 +17,7 @@ const AppRoutes = () => (
     <Route path="/cart" element={<CartPage />} />
     <Route path="/faq" element={<FAQPage />} />
     <Route path="/contact" element={<ContactPage />} />
+    <Route path="/settings" element={<UserSettings />} />
     <Route path="*" element={<NotFoundPage />} />
   </Routes>
 );

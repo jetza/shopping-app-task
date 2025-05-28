@@ -1,0 +1,109 @@
+.settingsWrapper {
+  max-width: 420px;
+  margin: 2.5rem auto;
+  background: var(--modal-bg);
+  border-radius: 16px;
+  box-shadow: 0 2px 24px rgba(52, 62, 61, 0.18);
+  border: 1.5px solid var(--border);
+  padding: 2rem 1.5rem 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+.profileSection {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+}
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.name {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.label {
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+}
+.value {
+  font-size: 1.05rem;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.input {
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+.saveBtn {
+  background: var(--accent);
+  color: var(--badge-text);
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+  &:hover {
+    background: var(--secondary);
+    color: var(--badge-text);
+  }
+}
+.cardsSection {
+  margin-top: 1.2rem;
+}
+.cardsList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.cardItem {
+  background: var(--background);
+  border-radius: 6px;
+  padding: 0.5rem 0.8rem;
+  display: flex;
+  gap: 1.2rem;
+  font-size: 1rem;
+  align-items: center;
+  border: 1px solid var(--border);
+}
+.addCardForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.addCardBtn {
+  background: var(--secondary);
+  color: var(--badge-text);
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.3rem;
+  transition: background 0.2s;
+  &:hover {
+    background: var(--accent);
+    color: var(--badge-text);
+  }
+}
