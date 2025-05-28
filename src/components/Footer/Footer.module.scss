@@ -31,3 +31,34 @@
 .footer__copyright {
   color: var(--text-secondary);
 }
+
+.footer__robot {
+  color: var(--accent);
+  font-size: 1.7em;
+  margin-right: 0.7em;
+  vertical-align: middle;
+  transition: transform 0.22s cubic-bezier(0.4, 0.2, 0.2, 1);
+  cursor: pointer;
+}
+
+.footer__robot:hover,
+.footer__robot:focus {
+  transform: scale(1.22);
+  animation: none;
+}
+
+.footer__robot.bounce {
+  animation: bounce-leave 0.38s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+@keyframes bounce-leave {
+  0% {
+    transform: scale(1.22);
+  }
+  40% {
+    transform: scale(0.92);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

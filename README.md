@@ -85,3 +85,21 @@ This app uses a Service Worker (`public/sw.js`) to cache images loaded from the 
 - The Service Worker is automatically registered in `src/main.tsx`.
 - If you update images on the server but keep the same URL, users may see the old image until the cache is refreshed. To force refresh, change the image URL or update the cache version in `sw.js`.
 - To disable this feature, remove the Service Worker registration code from `main.tsx` and/or delete `public/sw.js`.
+
+## Chatbot Assistant (AI)
+
+A built-in AI chatbot assistant is available in the app. The chatbot was created in Microsoft Copilot Studio and then embedded directly into the code as a modal panel.
+
+You can open the chatbot by clicking the robot icon in the footer. The chatbot opens as a modal panel and can answer questions about products, categories, and how to use the site (in both English and Serbian). It is embedded via Microsoft Copilot Studio and supports:
+
+- Product and category Q&A
+- Help with using the cart, search, language/theme switch, and user settings
+- General information about the store
+
+**How to use:**
+
+- Click the robot icon in the footer (bottom right)
+- The chatbot will open as a sidebar/modal
+- You can close it by clicking the X or pressing Escape
+
+The chatbot uses the latest product data and help documentation as its knowledge base.

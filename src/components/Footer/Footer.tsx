@@ -1,11 +1,33 @@
 import styles from './Footer.module.scss';
 import LangMenu from '@/components/LangMenu/LangMenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopyright } from '@fortawesome/free-solid-svg-icons';
+import { faCopyright, faRobot } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
+import { useRef, useState, Suspense, lazy } from 'react';
+import Loader from '@/components/Loader/Loader';
+
+const ChatbotModal = lazy(() => import('@/components/ChatbotModal/ChatbotModal'));
 
 const Footer = () => {
   const { t } = useTranslation();
+  const robotRef = useRef<HTMLSpanElement>(null);
+  const [chatbotOpen, setChatbotOpen] = useState(false);
+
+  const handleMouseLeave = () => {
+    const el = robotRef.current;
+    if (el) {
+      el.classList.remove(styles.bounce);
+      void el.offsetWidth;
+      el.classList.add(styles.bounce);
+      setTimeout(() => {
+        el.classList.remove(styles.bounce);
+      }, 380);
+    }
+  };
+
+  const handleRobotClick = () => setChatbotOpen(true);
+  const handleChatbotClose = () => setChatbotOpen(false);
+
   return (
     <footer className={styles.footer} role="contentinfo" aria-label={t('footer.regionLabel')}>
       <div className={styles.footer__left}>
@@ -16,7 +38,24 @@ const Footer = () => {
         </span>
       </div>
       <div className={styles.footer__right}>
+        <span
+          ref={robotRef}
+          className={styles.footer__robot}
+          tabIndex={0}
+          title={t('footer.aiAssistant')}
+          onMouseLeave={handleMouseLeave}
+          onClick={handleRobotClick}
+          role="button"
+          aria-label={t('footer.openChatbotAria')}
+        >
+          <FontAwesomeIcon icon={faRobot} />
+        </span>
         <LangMenu aria-label={t('footer.langMenuAria')} />
+        {chatbotOpen && (
+          <Suspense fallback={<Loader />}>
+            <ChatbotModal open={chatbotOpen} onClose={handleChatbotClose} />
+          </Suspense>
+        )}
       </div>
     </footer>
   );
