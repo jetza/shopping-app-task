@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Products from '@/components/Products/Products';
+import Category from '@/components/Category/Category';
 import type { Product } from '@/types/product';
 import styles from './CategoriesPage.module.scss';
 import { fetchProducts } from '@/api/productsAPI';
@@ -27,12 +27,7 @@ const CategoriesPage = () => {
   return (
     <div className={styles.categoriesPage}>
       {Object.entries(categories).map(([category, prods]) => (
-        <div key={category} className={styles.categorySection}>
-          <h2 className={styles.categoryTitle}>{category}</h2>
-          <div className={styles.categoriesFlexGrid}>
-            <Products products={prods} />
-          </div>
-        </div>
+        <Category key={category} name={category} products={prods} />
       ))}
     </div>
   );

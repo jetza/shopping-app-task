@@ -187,5 +187,9 @@
     "text": "The page with new arrivals is coming soon!"
   },
   "aiAssistant": "AI Assistant",
-  "openChatbotAria": "Open chatbot"
+  "openChatbotAria": "Open chatbot",
+  "category": {
+    "prevProducts": "Previous products",
+    "nextProducts": "Next products"
+  }
 }
