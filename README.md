@@ -17,6 +17,19 @@ This is a modern e-commerce web application built with React and Redux, featurin
 - Theme switcher (light/dark)
 - Accessibility: all texts and aria-labels are translated and screen reader friendly
 - 404 Not Found page
+- **Live product search modal** with React Query (shows results after 3+ characters, live filtering, loading/error states, i18n, and a11y)
+- **Responsive category/product grid** (no carousel, modern grid layout)
+- **Redux-powered cart actions** (add, remove, increase, decrease, clear)
+- **Custom Toast notifications** (animated, no external libs):
+  - Green for add to cart
+  - Red for remove from cart (minus or remove button)
+  - Orange for info (e.g. cart cleared, security code sent)
+- **Toasts are fully internationalized** (i18n)
+- **Toasts work everywhere** (Products, Product Details, Category, Cart, User Settings)
+- **User Settings**:
+  - Change password with security code (shows orange toast when code is sent)
+  - Add credit card (with validation)
+- **All unused code, classes, and translations cleaned up**
 
 ## Used Libraries
 
@@ -29,6 +42,7 @@ This is a modern e-commerce web application built with React and Redux, featurin
 - **react-hook-form** and **zod** – form validation
 - **FontAwesome** – icons
 - **Sass (SCSS)** – styling
+- **@tanstack/react-query** – data fetching and caching
 
 ## Running the Application
 

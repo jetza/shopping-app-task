@@ -7,7 +7,7 @@ const Brends = () => {
   const brands = i18n.language === 'en' ? brandsEn : brandsSr;
   return (
     <div className={styles.newsContainer}>
-      <h1 className={styles.newsTitle}>Brendovi u našem shopu</h1>
+      <h1 className={styles.newsTitle}>Brends</h1>
       <div className={styles.brandList}>
         {brands.map((brand) => (
           <div key={brand.name} className={styles.brandCard}>
