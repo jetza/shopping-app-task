@@ -118,10 +118,7 @@
     "profileAria": "Go to profile page",
     "settings": "Account Settings",
     "settingsAria": "Go to account settings",
-    "orders": "My Orders",
-    "ordersAria": "Go to order history",
-    "notifications": "Notifications",
-    "notificationsAria": "Go to notifications",
+    "cart": "Cart",
     "faq": "FAQ / Help",
     "faqAria": "Go to FAQ or Help page",
     "contact": "Contact Support",
@@ -166,6 +163,15 @@
     "cardExpiry": "MM/YY",
     "cardName": "Name on card",
     "addCardBtn": "Add card",
-    "success": "Password changed successfully!"
+    "success": "Password changed successfully!",
+    "cardRequired": "All card fields are required.",
+    "passwordRequired": "Password is required",
+    "allFieldsRequired": "All fields are required.",
+    "clickSendCode": "Please click 'Send security code' first.",
+    "passwordMin": "Password must be at least 6 characters.",
+    "cardNumberInvalid": "Card number must be at least 12 digits.",
+    "cardExpiryInvalid": "Expiry must be at least 4 characters (MM/YY).",
+    "cardNameInvalid": "Name must be at least 2 characters.",
+    "passwordsDontMatch": "Passwords do not match."
   }
 }

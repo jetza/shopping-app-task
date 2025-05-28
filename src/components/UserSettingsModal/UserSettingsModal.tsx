@@ -40,12 +40,12 @@ const UserSettingsModal = ({ open, onClose, avatar, username }: UserSettingsModa
             <FontAwesomeIcon icon={faGear} /> {t('header.settings')}
           </Link>
           <Link
-            to="/orders"
+            to="/cart"
             className={styles.modalLink}
-            aria-label={t('header.ordersAria')}
+            aria-label={t('header.cartAria')}
             onClick={onClose}
           >
-            <FontAwesomeIcon icon={faBoxOpen} /> {t('header.orders')}
+            <FontAwesomeIcon icon={faBoxOpen} /> {t('header.cart')}
           </Link>
           <Link
             to="/faq"

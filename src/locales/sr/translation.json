@@ -118,13 +118,10 @@
     "profileAria": "Idi na stranicu profila",
     "settings": "Podešavanja naloga",
     "settingsAria": "Idi na podešavanja naloga",
-    "orders": "Moje porudžbine",
-    "ordersAria": "Idi na istoriju porudžbina",
-    "notifications": "Notifikacije",
-    "notificationsAria": "Idi na notifikacije",
+    "cart": "Korpa",
     "faq": "FAQ / Pomoć",
     "faqAria": "Idi na FAQ ili Pomoć stranicu",
-    "contact": "Kontakt podrška",
+    "contact": "Kontakt podrške",
     "contactAria": "Kontaktiraj podršku"
   },
   "faq": {
@@ -136,10 +133,10 @@
     "q3": "Kako da promenim lozinku?",
     "a3": "Posetite Podešavanja naloga za izmenu lozinke.",
     "q4": "Kako da kontaktiram podršku?",
-    "a4": "Koristite stranicu Kontakt podrška ili pišite na support@store.com."
+    "a4": "Koristite stranicu Kontakt podrške ili pišite na support@store.com."
   },
   "contact": {
-    "title": "Kontakt podrška",
+    "title": "Kontakt podrške",
     "description": "Za sva pitanja ili probleme, kontaktirajte nas:",
     "emailLabel": "Email",
     "phoneLabel": "Telefon",
@@ -166,6 +163,15 @@
     "cardExpiry": "MM/YY",
     "cardName": "Ime na kartici",
     "addCardBtn": "Dodaj karticu",
-    "success": "Lozinka uspešno promenjena!"
+    "success": "Lozinka uspešno promenjena!",
+    "cardRequired": "Sva polja za karticu su obavezna.",
+    "passwordRequired": "Lozinka je obavezna",
+    "allFieldsRequired": "Sva polja su obavezna.",
+    "clickSendCode": "Prvo kliknite na 'Pošalji sigurnosni kod'.",
+    "passwordMin": "Lozinka mora imati bar 6 karaktera.",
+    "cardNumberInvalid": "Broj kartice nije ispravan.",
+    "cardExpiryInvalid": "Datum mora biti u formatu MM/YY.",
+    "cardNameInvalid": "Ime mora imati bar 2 slova.",
+    "passwordsDontMatch": "Lozinke se ne poklapaju."
   }
 }

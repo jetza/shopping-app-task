@@ -81,6 +81,12 @@
   padding-left: 1.2rem;
 }
 
+.contactEmailAccent {
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
 @media (max-width: 800px) {
   .contactContainer {
     padding: 1.2rem 0.5rem 2rem 0.5rem;

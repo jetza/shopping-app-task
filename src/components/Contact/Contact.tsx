@@ -11,7 +11,9 @@ const Contact = () => {
         <ul className={styles.contactList}>
           <li>
             <strong>{t('contact.emailLabel')}:</strong>{' '}
-            <a href="mailto:admin@store.com">admin@store.com</a>
+            <a href="mailto:admin@store.com" className={styles.contactEmailAccent}>
+              admin@store.com
+            </a>
           </li>
           <li>
             <strong>{t('contact.phoneLabel')}:</strong> +381 11 123 4567

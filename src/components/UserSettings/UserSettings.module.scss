@@ -29,6 +29,7 @@
 .name {
   font-size: 1.2rem;
   font-weight: 600;
+  color: var(--accent);
 }
 .label {
   color: var(--text-secondary);
@@ -49,6 +50,11 @@
   font-size: 1rem;
   margin-bottom: 0.2rem;
 }
+.input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
 .saveBtn {
   background: var(--accent);
   color: var(--badge-text);
@@ -84,7 +90,10 @@
   gap: 1.2rem;
   font-size: 1rem;
   align-items: center;
-  border: 1px solid var(--border);
+  border: 1px solid var(--accent);
+}
+.cardItem span:last-child {
+  color: var(--accent);
 }
 .addCardForm {
   display: flex;
@@ -106,4 +115,17 @@
     background: var(--accent);
     color: var(--badge-text);
   }
+}
+.errorMsg {
+  color: var(--error);
+  font-size: 0.98rem;
+  margin-bottom: 4px;
+}
+
+.marginBottom {
+  margin-bottom: 8px;
+}
+
+.inputMarginBottom {
+  margin-bottom: 4px;
 }
