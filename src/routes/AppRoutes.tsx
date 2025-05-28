@@ -9,6 +9,7 @@ import ContactPage from '@/pages/Contact/ContactPage';
 import UserSettings from '@/components/UserSettings/UserSettings';
 import BrendsPage from '@/pages/Brends/BrendsPage';
 import NewArrivalsPage from '@/pages/NewArrivals/NewArrivalsPage';
+import CategoriesPage from '@/pages/Categories/CategoriesPage';
 
 const AppRoutes = () => (
   <Routes>
@@ -22,6 +23,7 @@ const AppRoutes = () => (
     <Route path="/settings" element={<UserSettings />} />
     <Route path="/brends" element={<BrendsPage />} />
     <Route path="/new-arrivals" element={<NewArrivalsPage />} />
+    <Route path="/categories" element={<CategoriesPage />} />
     <Route path="*" element={<NotFoundPage />} />
   </Routes>
 );
