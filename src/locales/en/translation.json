@@ -191,5 +191,8 @@
   "category": {
     "prevProducts": "Previous products",
     "nextProducts": "Next products"
+  },
+  "toast": {
+    "addedToCart": "Product added to cart!"
   }
 }

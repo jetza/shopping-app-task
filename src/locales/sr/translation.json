@@ -185,5 +185,8 @@
     "text": "Stranica sa novim proizvodima uskoro!"
   },
   "aiAssistant": "AI asistent",
-  "openChatbotAria": "Otvori četbot"
+  "openChatbotAria": "Otvori četbot",
+  "toast": {
+    "addedToCart": "Proizvod dodat u korpu!"
+  }
 }

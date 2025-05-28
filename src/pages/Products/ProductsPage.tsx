@@ -8,12 +8,15 @@ import Loader from '@/components/Loader/Loader';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/slices/cartSlice';
+import Toast from '@/components/Toast/Toast';
+import { useState } from 'react';
 
 const ProductsPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data: products, loading, error } = useFetch<Product[]>(fetchAllProducts);
+  const [showNotif, setShowNotif] = useState(false);
 
   if (loading) return <Loader />;
   if (error) return <p>{t('productsPage.error')}</p>;
@@ -26,10 +29,13 @@ const ProductsPage = () => {
 
   const handleAddToCart = (product: Product) => {
     dispatch(addToCart(product));
+    setShowNotif(true);
+    setTimeout(() => setShowNotif(false), 2000);
   };
 
   return (
     <div>
+      {showNotif ? <Toast message={t('toast.addedToCart')} /> : null}
       <Products
         products={mappedProducts}
         onProductDetails={handleProductDetails}

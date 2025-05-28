@@ -1,0 +1,32 @@
+.toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background: var(--accent);
+  color: var(--badge-text);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  z-index: 3000;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+  animation: fadeInOut 2s;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}

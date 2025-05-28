@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import styles from './Cart.module.scss';
 import type { CartItem } from '@/slices/cartSlice';
+import Toast from '@/components/Toast/Toast';
+import { useState } from 'react';
 
 interface CartProps {
   items: CartItem[];
@@ -20,6 +22,8 @@ const Cart = ({
   clearCart,
 }: CartProps) => {
   const { t } = useTranslation();
+  const [showNotif, setShowNotif] = useState(false);
+
   if (items.length === 0)
     return (
       <p className={styles.cartTitle} role="status" aria-live="polite">
@@ -27,8 +31,15 @@ const Cart = ({
       </p>
     );
 
+  const handleIncrease = (id: number) => {
+    increaseQuantity(id);
+    setShowNotif(true);
+    setTimeout(() => setShowNotif(false), 2000);
+  };
+
   return (
     <div className={styles.cartContainer} role="region" aria-label={t('cart.regionLabel')}>
+      {showNotif ? <Toast message={t('toast.addedToCart')} /> : null}
       <h2 className={styles.cartTitle} tabIndex={0} aria-label={t('cart.title')}>
         {t('cart.title')}
       </h2>
@@ -77,7 +88,7 @@ const Cart = ({
                 -
               </button>
               <button
-                onClick={() => increaseQuantity(item.id)}
+                onClick={() => handleIncrease(item.id)}
                 aria-label={t('cart.increase', { title: item.title })}
               >
                 +
