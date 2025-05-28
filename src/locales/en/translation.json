@@ -90,7 +90,8 @@
     "submit": "Submit",
     "headerAria": "Header search",
     "headerPlaceholder": "Search products...",
-    "openModalAria": "Open search modal"
+    "openModalAria": "Open search modal",
+    "noResults": "No products found for '{{query}}'."
   },
   "themeSwitcher": {
     "regionLabel": "Theme switcher",

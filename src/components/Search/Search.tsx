@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './Search.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useProductsQuery } from '@/hooks/useProductsQuery';
 
 interface SearchProps {
   isMobile?: boolean;
@@ -22,12 +23,20 @@ const Search = ({
   const { t } = useTranslation();
   const [input, setInput] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
+  const { data: products, isLoading, isError } = useProductsQuery();
 
   useEffect(() => {
     if (isMobile && isModalOpen) {
       inputRef.current?.focus();
     }
   }, [isMobile, isModalOpen]);
+
+  // Filtriraj proizvode po inputu, pretraga tek na 3+ slova
+  const filteredProducts =
+    input.length >= 3
+      ? products?.filter((product) => product.title.toLowerCase().includes(input.toLowerCase())) ||
+        []
+      : [];
 
   if (isMobile && isModalOpen) {
     return (
@@ -77,14 +86,29 @@ const Search = ({
               onFocus={onFocus}
               ref={inputRef}
             />
-            <button
-              type="submit"
-              className={styles.searchModalSubmit}
-              aria-label={t('search.submitAria')}
-            >
-              {t('search.submit')}
-            </button>
           </form>
+          {isLoading && <div className={styles.searchLoading}>Loading...</div>}
+          {isError && <div className={styles.searchError}>Greška pri učitavanju proizvoda.</div>}
+          {/* Prikaz rezultata pretrage */}
+          <div className={styles.searchResults}>
+            {input && filteredProducts.length === 0 && (
+              <div className={styles.noResults}>{t('search.noResults', { query: input })}</div>
+            )}
+            {filteredProducts.map((product) => (
+              <div
+                key={product.id}
+                className={styles.searchResultItem}
+                tabIndex={0}
+                role="button"
+                onClick={() => {
+                  if (onCloseModal) onCloseModal();
+                  window.location.href = `/products/${product.id}`;
+                }}
+              >
+                <span className={styles.resultTitle}>{product.title}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );

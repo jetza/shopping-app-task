@@ -6,6 +6,7 @@ import { store } from '@/store/store';
 import type { RootState } from '@/store/store';
 import './styles/global.scss';
 import './i18n';
+import { QueryClientProvider, queryClient } from '@/api/reactQueryClient';
 
 function ThemeWrapper() {
   const theme = useSelector((state: RootState) => state.theme.current);
@@ -21,7 +22,9 @@ function ThemeWrapper() {
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <ThemeWrapper />
+      <QueryClientProvider client={queryClient}>
+        <ThemeWrapper />
+      </QueryClientProvider>
     </Provider>
   </React.StrictMode>,
 );

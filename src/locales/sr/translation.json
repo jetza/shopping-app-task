@@ -91,7 +91,8 @@
     "submit": "Pošalji",
     "headerAria": "Pretraga u zaglavlju",
     "headerPlaceholder": "Pretraži proizvode...",
-    "openModalAria": "Otvori prozor za pretragu"
+    "openModalAria": "Otvori prozor za pretragu",
+    "noResults": "Nema proizvoda za '{{query}}'."
   },
   "themeSwitcher": {
     "regionLabel": "Promena teme",

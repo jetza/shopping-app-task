@@ -51,7 +51,7 @@
 .searchModalOverlay {
   position: fixed;
   inset: 0;
-  z-index: 300;
+  z-index: 2000; // povecano sa 300
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
@@ -68,14 +68,16 @@
 .searchModalBox {
   background: var(--modal-bg);
   border-radius: 16px;
-  box-shadow: var(--background);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.18); // ispravljena senka
   padding: 2rem 1.5rem 2rem 1.5rem;
   width: 90vw;
   max-width: 400px;
+  min-height: 420px; // dodatno povećana visina
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  justify-content: flex-start;
 }
 .searchModalClose {
   position: absolute;
@@ -137,6 +139,38 @@
   &:hover {
     background: var(--text-secondary);
   }
+}
+.searchResults {
+  min-height: 120px; // prostor za rezultate
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.searchResultItem {
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: var(--font-title-light);
+  color: var(--text);
+  background: var(--background);
+  cursor: pointer;
+  transition: color 0.18s;
+  display: flex;
+  align-items: center;
+  min-height: 2.2rem;
+  &:hover,
+  &:focus {
+    background: var(--background); // nema promene pozadine
+    color: var(--accent); // samo tekst
+    outline: none;
+  }
+}
+.noResults {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-family: var(--font-title-light);
+  padding: 1.2rem 0 0.5rem 0;
+  text-align: center;
 }
 
 .sr-only {
