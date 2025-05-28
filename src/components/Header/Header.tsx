@@ -9,6 +9,12 @@ import {
   faBars,
   faTimes,
   faXmark,
+  faBell,
+  faGear,
+  faQuestionCircle,
+  faBoxOpen,
+  faEnvelope,
+  faUserCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import styles from './Header.module.scss';
 import HeaderNav from '@/components/HeaderNav/HeaderNav';
@@ -32,6 +38,13 @@ const Header = () => {
   const [logoutModalOpen, setLogoutModalOpen] = useState(false);
   const { isMobile } = useDevice();
   const { t } = useTranslation();
+
+  const user = {
+    name: 'Jelena Aleksić',
+    email: 'jelena@example.com',
+    avatar: 'https://avatar.iran.liara.run/public',
+    unreadNotifications: 3,
+  };
 
   useEffect(() => {
     if (menuOpen) {
@@ -151,6 +164,123 @@ const Header = () => {
                 <FontAwesomeIcon icon={faXmark} />
               </button>
               <div className={styles.logoutModalContent}>
+                <img
+                  src={user.avatar}
+                  alt={t('header.avatarAlt', { name: user.name })}
+                  style={{
+                    width: 56,
+                    height: 56,
+                    borderRadius: '50%',
+                    marginBottom: 8,
+                    border: '2px solid var(--accent)',
+                  }}
+                />
+                <div style={{ textAlign: 'center', marginBottom: 8 }}>
+                  <div style={{ fontWeight: 600 }}>{user.name}</div>
+                  <div
+                    style={{
+                      fontSize: '0.97rem',
+                      color: 'var(--text-secondary)',
+                    }}
+                  >
+                    {user.email}
+                  </div>
+                </div>
+                <Link
+                  to="/profile"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    width: '100%',
+                  }}
+                  aria-label={t('header.profileAria')}
+                >
+                  <FontAwesomeIcon icon={faUserCircle} /> {t('header.profile')}
+                </Link>
+                <Link
+                  to="/settings"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    width: '100%',
+                  }}
+                  aria-label={t('header.settingsAria')}
+                >
+                  <FontAwesomeIcon icon={faGear} /> {t('header.settings')}
+                </Link>
+                <Link
+                  to="/orders"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    width: '100%',
+                  }}
+                  aria-label={t('header.ordersAria')}
+                >
+                  <FontAwesomeIcon icon={faBoxOpen} /> {t('header.orders')}
+                </Link>
+                <Link
+                  to="/notifications"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    width: '100%',
+                    position: 'relative',
+                  }}
+                  aria-label={t('header.notificationsAria')}
+                >
+                  <FontAwesomeIcon icon={faBell} />
+                  {user.unreadNotifications > 0 && (
+                    <span
+                      style={{
+                        background: 'var(--accent)',
+                        color: 'var(--badge-text)',
+                        borderRadius: '50%',
+                        fontSize: 12,
+                        minWidth: 18,
+                        height: 18,
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        position: 'absolute',
+                        left: 22,
+                        top: -4,
+                        padding: '0 5px',
+                      }}
+                    >
+                      {user.unreadNotifications}
+                    </span>
+                  )}
+                  {t('header.notifications')}
+                </Link>
+                <Link
+                  to="/faq"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    width: '100%',
+                  }}
+                  aria-label={t('header.faqAria')}
+                >
+                  <FontAwesomeIcon icon={faQuestionCircle} /> {t('header.faq')}
+                </Link>
+                <Link
+                  to="/contact"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    width: '100%',
+                  }}
+                  aria-label={t('header.contactAria')}
+                >
+                  <FontAwesomeIcon icon={faEnvelope} /> {t('header.contact')}
+                </Link>
                 <ThemeSwitcher />
                 <button
                   className={styles.logoutModalBtn}
@@ -168,6 +298,122 @@ const Header = () => {
         ) : (
           <div className={styles.logoutPopover}>
             <div className={styles.logoutPopoverContent}>
+              <img
+                src={user.avatar}
+                alt={t('header.avatarAlt', { name: user.name })}
+                style={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: '50%',
+                  marginBottom: 6,
+                  border: '2px solid var(--accent)',
+                }}
+              />
+              <div style={{ fontWeight: 600 }}>{user.name}</div>
+              <div
+                style={{
+                  fontSize: '0.97rem',
+                  color: 'var(--text-secondary)',
+                  marginBottom: 6,
+                }}
+              >
+                {user.email}
+              </div>
+              <Link
+                to="/profile"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  width: '100%',
+                }}
+                aria-label={t('header.profileAria')}
+              >
+                <FontAwesomeIcon icon={faUserCircle} /> {t('header.profile')}
+              </Link>
+              <Link
+                to="/settings"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  width: '100%',
+                }}
+                aria-label={t('header.settingsAria')}
+              >
+                <FontAwesomeIcon icon={faGear} /> {t('header.settings')}
+              </Link>
+              <Link
+                to="/orders"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  width: '100%',
+                }}
+                aria-label={t('header.ordersAria')}
+              >
+                <FontAwesomeIcon icon={faBoxOpen} /> {t('header.orders')}
+              </Link>
+              <Link
+                to="/notifications"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  width: '100%',
+                  position: 'relative',
+                }}
+                aria-label={t('header.notificationsAria')}
+              >
+                <FontAwesomeIcon icon={faBell} />
+                {user.unreadNotifications > 0 && (
+                  <span
+                    style={{
+                      background: 'var(--accent)',
+                      color: 'var(--badge-text)',
+                      borderRadius: '50%',
+                      fontSize: 12,
+                      minWidth: 18,
+                      height: 18,
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      position: 'absolute',
+                      left: 22,
+                      top: -4,
+                      padding: '0 5px',
+                    }}
+                  >
+                    {user.unreadNotifications}
+                  </span>
+                )}
+                {t('header.notifications')}
+              </Link>
+              <Link
+                to="/faq"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  width: '100%',
+                }}
+                aria-label={t('header.faqAria')}
+              >
+                <FontAwesomeIcon icon={faQuestionCircle} /> {t('header.faq')}
+              </Link>
+              <Link
+                to="/contact"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  width: '100%',
+                }}
+                aria-label={t('header.contactAria')}
+              >
+                <FontAwesomeIcon icon={faEnvelope} /> {t('header.contact')}
+              </Link>
               <ThemeSwitcher />
               <button
                 aria-label={t('logout')}

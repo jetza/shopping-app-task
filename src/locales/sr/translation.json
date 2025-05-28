@@ -108,8 +108,44 @@
     "logoAria": "Idi na početnu stranicu",
     "cartAria": "Pogledaj korpu",
     "cartBadgeAria": "Stavki u korpi: {{count}}",
-    "openLogoutAria": "Otvori prozor za odjavu",
+    "openLogoutAria": "Otvori meni za odjavu",
     "menuAria": "Glavni meni",
-    "closeMenuAria": "Zatvori meni"
+    "closeMenuAria": "Zatvori meni",
+    "avatarAlt": "Korisnički avatar za {{name}}",
+    "profile": "Profil",
+    "profileAria": "Idi na stranicu profila",
+    "settings": "Podešavanja naloga",
+    "settingsAria": "Idi na podešavanja naloga",
+    "orders": "Moje porudžbine",
+    "ordersAria": "Idi na istoriju porudžbina",
+    "notifications": "Notifikacije",
+    "notificationsAria": "Idi na notifikacije",
+    "faq": "FAQ / Pomoć",
+    "faqAria": "Idi na FAQ ili Pomoć stranicu",
+    "contact": "Kontakt podrška",
+    "contactAria": "Kontaktiraj podršku"
+  },
+  "faq": {
+    "title": "Najčešća pitanja",
+    "q1": "Kako da poručim proizvod?",
+    "a1": "Pregledajte proizvode, dodajte u korpu i nastavite na plaćanje.",
+    "q2": "Kako mogu da pratim svoju porudžbinu?",
+    "a2": "Idite na 'Moje porudžbine' u profilu za status porudžbine.",
+    "q3": "Kako da promenim lozinku?",
+    "a3": "Posetite Podešavanja naloga za izmenu lozinke.",
+    "q4": "Kako da kontaktiram podršku?",
+    "a4": "Koristite stranicu Kontakt podrška ili pišite na support@store.com."
+  },
+  "contact": {
+    "title": "Kontakt podrška",
+    "description": "Za sva pitanja ili probleme, kontaktirajte nas:",
+    "emailLabel": "Email",
+    "phoneLabel": "Telefon",
+    "formInfo": "Ili nam pošaljite poruku putem forme ispod:",
+    "name": "Vaše ime",
+    "email": "Vaš email",
+    "message": "Poruka",
+    "send": "Pošalji",
+    "submit": "Pošalji"
   }
 }

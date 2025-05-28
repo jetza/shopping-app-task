@@ -110,6 +110,42 @@
     "cartBadgeAria": "Cart items: {{count}}",
     "openLogoutAria": "Open logout modal",
     "menuAria": "Main menu",
-    "closeMenuAria": "Close menu"
+    "closeMenuAria": "Close menu",
+    "avatarAlt": "User avatar for {{name}}",
+    "profile": "My Profile",
+    "profileAria": "Go to profile page",
+    "settings": "Account Settings",
+    "settingsAria": "Go to account settings",
+    "orders": "My Orders",
+    "ordersAria": "Go to order history",
+    "notifications": "Notifications",
+    "notificationsAria": "Go to notifications",
+    "faq": "FAQ / Help",
+    "faqAria": "Go to FAQ or Help page",
+    "contact": "Contact Support",
+    "contactAria": "Contact support"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1": "How do I place an order?",
+    "a1": "Browse products, add to cart, and proceed to checkout.",
+    "q2": "How can I track my order?",
+    "a2": "Go to 'My Orders' in your profile to see order status.",
+    "q3": "How do I change my password?",
+    "a3": "Visit Account Settings to update your password.",
+    "q4": "How do I contact support?",
+    "a4": "Use the Contact Support page or email us at support@store.com."
+  },
+  "contact": {
+    "title": "Contact Support",
+    "description": "For any questions or issues, reach out to us:",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "formInfo": "Or send us a message using the form below:",
+    "name": "Your Name",
+    "email": "Your Email",
+    "message": "Message",
+    "send": "Send",
+    "submit": "Submit"
   }
 }

@@ -1,0 +1,78 @@
+@use '@/styles/global.scss' as *;
+
+.faqContainer {
+  max-width: 700px;
+  margin: 2.5rem auto 2.5rem auto;
+  background: var(--card-bg, var(--background));
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(52, 62, 61, 0.1);
+  border: 1.5px solid var(--border);
+  padding: 2.5rem 2rem 2.5rem 2rem;
+  font-family: var(--font-title-light);
+  color: var(--text);
+}
+
+.faqTitle {
+  font-family: var(--font-title);
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.faqContent {
+  margin: 2rem 0;
+}
+
+.faqQuestion {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 1.2rem;
+  margin-bottom: 0.3rem;
+  color: var(--text);
+}
+
+.faqAnswer {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.7rem;
+}
+
+.faqAccordionItem {
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.5rem;
+}
+
+.faqAccordionButton {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--text);
+  padding: 1rem 0;
+  cursor: pointer;
+  transition: color 0.2s;
+  font-family: var(--font-title-light);
+  text-align: left;
+}
+.faqAccordionButton:focus {
+  color: var(--accent);
+}
+
+.faqAccordionIcon {
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-left: 1rem;
+  transition: transform 0.2s;
+}
+
+.faqAccordionPanel {
+  padding: 0.5rem 0 1rem 0.2rem;
+  animation: fadeIn 0.2s;
+}

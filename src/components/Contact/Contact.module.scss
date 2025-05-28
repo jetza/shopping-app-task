@@ -1,0 +1,92 @@
+@use '@/styles/global.scss' as *;
+
+.contactContainer {
+  max-width: 700px;
+  margin: 2.5rem auto 2.5rem auto;
+  background: var(--card-bg, var(--background));
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(52, 62, 61, 0.1);
+  border: 1.5px solid var(--border);
+  padding: 2.5rem 2rem 2.5rem 2rem;
+  font-family: var(--font-title-light);
+  color: var(--text);
+}
+
+.contactSubmitBtn {
+  background: var(--accent);
+  color: var(--badge-text);
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 1.2rem;
+  font-family: var(--font-title);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition:
+    background 0.2s,
+    color 0.2s;
+  width: 100%;
+  display: block;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
+}
+.contactSubmitBtn:hover {
+  background: var(--secondary);
+  color: var(--badge-text);
+}
+
+.contactForm {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.contactInput,
+.contactTextarea {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1.5px solid var(--border);
+  font-size: 1rem;
+  font-family: var(--font-text);
+  background: var(--background);
+  color: var(--text);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contactInput:focus,
+.contactTextarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.contactTitle {
+  text-align: center;
+  color: var(--accent);
+  font-family: var(--font-title);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+}
+
+.contactList {
+  margin: 1.5rem 0;
+  padding-left: 1.2rem;
+}
+
+@media (max-width: 800px) {
+  .contactContainer {
+    padding: 1.2rem 0.5rem 2rem 0.5rem;
+  }
+  .contactForm {
+    width: 100%;
+    max-width: none;
+  }
+}
