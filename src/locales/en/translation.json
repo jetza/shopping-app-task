@@ -21,7 +21,9 @@
     "totalLabel": "Total price: ${{total}}",
     "total": "Total: ${{total}}",
     "clearLabel": "Clear entire cart",
-    "clear": "Clear cart"
+    "clear": "Clear cart",
+    "checkout": "Checkout",
+    "checkoutLabel": "Proceed to checkout"
   },
   "footer": {
     "regionLabel": "Site footer",

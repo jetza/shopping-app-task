@@ -98,9 +98,22 @@ const Cart = ({
       >
         {t('cart.total', { total: total.toFixed(2) })}
       </h3>
-      <button className={styles.clearCartBtn} onClick={clearCart} aria-label={t('cart.clearLabel')}>
-        {t('cart.clear')}
-      </button>
+      <div className={styles.cartActionsRow}>
+        <button
+          className={styles.checkoutBtn}
+          onClick={() => alert('Checkout!')}
+          aria-label={t('cart.checkoutLabel')}
+        >
+          {t('cart.checkout')}
+        </button>
+        <button
+          className={styles.clearCartBtn}
+          onClick={clearCart}
+          aria-label={t('cart.clearLabel')}
+        >
+          {t('cart.clear')}
+        </button>
+      </div>
     </div>
   );
 };

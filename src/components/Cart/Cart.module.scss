@@ -92,6 +92,48 @@
   color: var(--text);
 }
 
+.cartActionsRow {
+  display: flex;
+  flex-direction: row;
+  gap: 1.2rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.checkoutBtn,
+.clearCartBtn {
+  margin: 0 !important;
+}
+
+.checkoutBtn {
+  margin-right: 0.5rem !important;
+}
+.clearCartBtn {
+  margin-left: 0.5rem !important;
+}
+
+.checkoutBtn {
+  background: var(--color-gray-mid);
+  color: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 2.2rem;
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+  display: block;
+}
+.checkoutBtn:hover,
+.checkoutBtn:focus {
+  background: var(--accent);
+  color: var(--badge-text);
+}
+
 .cartTotal {
   font-family: var(--font-title);
   font-size: 1.3rem;

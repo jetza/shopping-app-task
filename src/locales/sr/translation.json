@@ -21,7 +21,9 @@
     "totalLabel": "Ukupna cena: {{total}} RSD",
     "total": "Ukupno: {{total}} RSD",
     "clearLabel": "Isprazni celu korpu",
-    "clear": "Isprazni korpu"
+    "clear": "Isprazni korpu",
+    "checkout": "Plaćanje",
+    "checkoutLabel": "Nastavi na plaćanje"
   },
   "footer": {
     "regionLabel": "Podnožje sajta",
