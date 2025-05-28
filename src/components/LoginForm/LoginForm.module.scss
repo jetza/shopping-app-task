@@ -9,6 +9,16 @@
   box-shadow: 0 2px 16px rgba(52, 62, 61, 0.08);
   font-family: var(--font-title-light);
   color: var(--text);
+  border: 1.5px solid var(--border);
+  transition:
+    border 0.2s,
+    box-shadow 0.2s;
+}
+
+.loginForm:focus-within,
+.loginForm:hover {
+  border-color: var(--accent);
+  box-shadow: 0 6px 32px rgba(56, 228, 174, 0.18);
 }
 
 .loginForm label {
