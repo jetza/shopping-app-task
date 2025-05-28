@@ -61,7 +61,9 @@
     "passwordRequired": "Password is required",
     "loginBtn": "Login",
     "loginBtnAria": "Login",
-    "wrongCredentials": "Wrong credentials"
+    "wrongCredentials": "Wrong credentials",
+    "registerBtn": "Register",
+    "registerBtnAria": "Open registration form"
   },
   "productCard": {
     "price": "$ {{price}}",

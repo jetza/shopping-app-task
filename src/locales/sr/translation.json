@@ -59,7 +59,9 @@
     "passwordRequired": "Lozinka je obavezna",
     "loginBtn": "Prijavi se",
     "loginBtnAria": "Prijava",
-    "wrongCredentials": "Pogrešni podaci"
+    "wrongCredentials": "Pogrešni podaci",
+    "registerBtn": "Registracija",
+    "registerBtnAria": "Otvori formu za registraciju"
   },
   "loginPage": {
     "title": "Prijava na STORE"

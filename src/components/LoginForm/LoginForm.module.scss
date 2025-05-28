@@ -81,3 +81,44 @@
   font-size: var(--font-size-sm);
   margin: 0.2rem 0 0.7rem 0;
 }
+
+.registerBtn {
+  margin-top: 1.2rem;
+  background: var(--gray-dark, #6c757d);
+  color: var(--text-white, #fff);
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 2.2rem;
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: block;
+  width: 100%;
+}
+.registerBtn:hover,
+.registerBtn:focus {
+  background: var(--accent);
+  color: var(--badge-text);
+}
+
+.registerLink {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 0.98rem;
+  font-family: var(--font-title-light);
+  margin: 0.7rem 0 0 0;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  display: block;
+  text-align: left;
+  transition: color 0.2s;
+}
+.registerLink:hover,
+.registerLink:focus {
+  color: var(--secondary);
+  text-decoration: underline;
+}

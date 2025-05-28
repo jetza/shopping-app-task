@@ -84,6 +84,9 @@ const LoginForm = () => {
       <button type="submit" aria-label={t('loginForm.loginBtnAria')}>
         {t('loginForm.loginBtn')}
       </button>
+      <button type="button" className={styles.registerLink} aria-label={t('loginForm.registerBtnAria')}>
+        {t('loginForm.registerBtn')}
+      </button>
     </form>
   );
 };
