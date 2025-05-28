@@ -3,14 +3,20 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '@/store/store';
 import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faUser, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+  faShoppingCart,
+  faUser,
+  faBars,
+  faTimes,
+  faSearch,
+} from '@fortawesome/free-solid-svg-icons';
 import styles from './Header.module.scss';
 import HeaderNav from '@/components/HeaderNav/HeaderNav';
-import Search from '@/components/Search/Search';
 import useDevice from '@/contexts/useDevice';
 import UserSettingsModal from '@/components/UserSettingsModal/UserSettingsModal';
 import { useTranslation } from 'react-i18next';
 import { AVATAR_URL } from '@/constants/urls';
+import Search from '@/components/Search/Search';
 
 const Header = () => {
   const location = useLocation();
@@ -21,8 +27,8 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
   const [menuClosing, setMenuClosing] = useState(false);
-  const [searchModalOpen, setSearchModalOpen] = useState(false);
   const [logoutModalOpen, setLogoutModalOpen] = useState(false);
+  const [searchModalOpen, setSearchModalOpen] = useState(false);
   const { isMobile } = useDevice();
   const { t } = useTranslation();
 
@@ -63,14 +69,17 @@ const Header = () => {
       <HeaderNav isMobile={isMobile} className={styles.header__center} />
 
       <div className={styles.header__right}>
-        <Search
-          isMobile={isMobile}
-          onOpenModal={() => {
-            if (!isMobile) setSearchModalOpen(true);
+        <button
+          className={styles.searchIcon}
+          aria-label={t('header.openSearchAria')}
+          onClick={() => {
+            setSearchModalOpen(true);
             setLogoutModalOpen(false);
           }}
-          onFocus={() => setLogoutModalOpen(false)}
-        />
+          type="button"
+        >
+          <FontAwesomeIcon icon={faSearch} className={styles.icon} aria-hidden="true" />
+        </button>
         <Link to="/cart" className={styles.cartIcon} aria-label={t('header.cartAria')} role="link">
           <FontAwesomeIcon icon={faShoppingCart} className={styles.icon} aria-hidden="true" />
           {cartItemsCount > 0 && (
@@ -82,17 +91,15 @@ const Header = () => {
             </span>
           )}
         </Link>
-        {
-          <button
-            className={styles.userIcon}
-            onClick={() => setLogoutModalOpen((open) => !open)}
-            aria-label={t('header.openLogoutAria')}
-            aria-haspopup="dialog"
-            aria-expanded={logoutModalOpen}
-          >
-            <FontAwesomeIcon icon={faUser} className={styles.icon} aria-hidden="true" />
-          </button>
-        }
+        <button
+          className={styles.userIcon}
+          onClick={() => setLogoutModalOpen((open) => !open)}
+          aria-label={t('header.openLogoutAria')}
+          aria-haspopup="dialog"
+          aria-expanded={logoutModalOpen}
+        >
+          <FontAwesomeIcon icon={faUser} className={styles.icon} aria-hidden="true" />
+        </button>
       </div>
 
       {/* Mobile menu overlay & modal */}
