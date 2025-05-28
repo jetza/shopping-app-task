@@ -23,13 +23,34 @@ const Cart = ({
 }: CartProps) => {
   const { t } = useTranslation();
   const [showNotif, setShowNotif] = useState(false);
+  const [showRemoveNotif, setShowRemoveNotif] = useState(false);
+  const [emptyCartToast, setEmptyCartToast] = useState(false);
+  const [showInfoToast, setShowInfoToast] = useState(false);
 
-  if (items.length === 0)
+  if (items.length === 0) {
+    if (showRemoveNotif || emptyCartToast || showInfoToast) {
+      if (emptyCartToast) {
+        setTimeout(() => setEmptyCartToast(false), 2000);
+      }
+      if (showInfoToast) {
+        setTimeout(() => setShowInfoToast(false), 2000);
+      }
+      return (
+        <div>
+          {showRemoveNotif ? <Toast message={t('toast.removedFromCart')} error /> : null}
+          {showInfoToast ? <Toast message={t('toast.cartCleared')} info /> : null}
+          <p className={styles.cartTitle} role="status" aria-live="polite">
+            {t('cart.empty')}
+          </p>
+        </div>
+      );
+    }
     return (
       <p className={styles.cartTitle} role="status" aria-live="polite">
         {t('cart.empty')}
       </p>
     );
+  }
 
   const handleIncrease = (id: number) => {
     increaseQuantity(id);
@@ -37,9 +58,31 @@ const Cart = ({
     setTimeout(() => setShowNotif(false), 2000);
   };
 
+  const handleDecrease = (id: number) => {
+    decreaseQuantity(id);
+    setShowRemoveNotif(true);
+    setTimeout(() => setShowRemoveNotif(false), 2000);
+  };
+
+  const handleRemove = (id: string) => {
+    setShowRemoveNotif(true);
+    setEmptyCartToast(true);
+    setTimeout(() => setShowRemoveNotif(false), 2000);
+    setTimeout(() => setEmptyCartToast(false), 2000);
+    removeFromCart(id);
+  };
+
+  const handleClearCart = () => {
+    clearCart();
+    setShowInfoToast(true);
+    setTimeout(() => setShowInfoToast(false), 2000);
+  };
+
   return (
     <div className={styles.cartContainer} role="region" aria-label={t('cart.regionLabel')}>
       {showNotif ? <Toast message={t('toast.addedToCart')} /> : null}
+      {showRemoveNotif ? <Toast message={t('toast.removedFromCart')} error /> : null}
+      {showInfoToast ? <Toast message={t('toast.cartCleared')} info /> : null}
       <h2 className={styles.cartTitle} tabIndex={0} aria-label={t('cart.title')}>
         {t('cart.title')}
       </h2>
@@ -82,7 +125,7 @@ const Cart = ({
               aria-label={t('cart.actions', { title: item.title })}
             >
               <button
-                onClick={() => decreaseQuantity(item.id)}
+                onClick={() => handleDecrease(item.id)}
                 aria-label={t('cart.decrease', { title: item.title })}
               >
                 -
@@ -94,7 +137,7 @@ const Cart = ({
                 +
               </button>
               <button
-                onClick={() => removeFromCart(String(item.id))}
+                onClick={() => handleRemove(String(item.id))}
                 aria-label={t('cart.remove', { title: item.title })}
               >
                 {t('cart.removeBtn')}
@@ -119,7 +162,7 @@ const Cart = ({
         </button>
         <button
           className={styles.clearCartBtn}
-          onClick={clearCart}
+          onClick={handleClearCart}
           aria-label={t('cart.clearLabel')}
         >
           {t('cart.clear')}

@@ -155,7 +155,7 @@
   "userSettings": {
     "title": "Podešavanja naloga",
     "changePassword": "Promena lozinke",
-    "sendCode": "Pošalji sigurnosni kod na email",
+    "sendCode": "Sigurnosni kod je poslat na email!",
     "codeSent": "Kod poslat na email",
     "enterCode": "Unesite sigurnosni kod",
     "wrongCode": "Pogrešan sigurnosni kod.",
@@ -187,6 +187,9 @@
   "aiAssistant": "AI asistent",
   "openChatbotAria": "Otvori četbot",
   "toast": {
-    "addedToCart": "Proizvod dodat u korpu!"
+    "addedToCart": "Proizvod dodat u korpu!",
+    "removedFromCart": "Proizvod uklonjen iz korpe!",
+    "sendCode": "Sigurnosni kod je poslat na email!",
+    "cartCleared": "Korpa je uspešno ispražnjena!"
   }
 }

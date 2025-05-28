@@ -157,7 +157,7 @@
   "userSettings": {
     "title": "Account Settings",
     "changePassword": "Change Password",
-    "sendCode": "Send security code to email",
+    "sendCode": "Security code sent to email!",
     "codeSent": "Code sent to email",
     "enterCode": "Enter security code",
     "wrongCode": "Incorrect security code.",
@@ -193,6 +193,9 @@
     "nextProducts": "Next products"
   },
   "toast": {
-    "addedToCart": "Product added to cart!"
+    "addedToCart": "Product added to cart!",
+    "removedFromCart": "Product removed from cart!",
+    "sendCode": "Security code sent to email!",
+    "cartCleared": "Cart has been cleared!"
   }
 }

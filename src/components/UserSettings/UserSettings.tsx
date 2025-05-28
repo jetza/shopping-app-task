@@ -6,6 +6,7 @@ import { mockUser } from './mockUser';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCcVisa } from '@fortawesome/free-brands-svg-icons';
 import { z } from 'zod';
+import Toast from '@/components/Toast/Toast';
 
 const UserSettings = () => {
   const { t } = useTranslation();
@@ -33,14 +34,23 @@ const UserSettings = () => {
     passwordError: '',
     cardError: '',
   });
+  const [showInfoToast, setShowInfoToast] = useState(false);
 
   useEffect(() => {
     setTimeout(() => setState((s) => ({ ...s, avatar: AVATAR_URL })), 300);
   }, []);
 
+  useEffect(() => {
+    if (showInfoToast) {
+      const timeout = setTimeout(() => setShowInfoToast(false), 2000);
+      return () => clearTimeout(timeout);
+    }
+  }, [showInfoToast]);
+
   const handleSendCode = (e: React.MouseEvent) => {
     e.preventDefault();
     setState((s) => ({ ...s, securityCode: '123456', securityCodeSent: true, passwordError: '' }));
+    setShowInfoToast(true);
   };
 
   const handlePasswordChange = (e: React.FormEvent) => {
@@ -89,6 +99,7 @@ const UserSettings = () => {
 
   return (
     <div className={styles.settingsWrapper}>
+      {showInfoToast && <Toast message={t('toast.sendCode')} info />}
       <div className={styles.profileSection}>
         <img src={state.avatar || '/assets/react.svg'} alt="Avatar" className={styles.avatar} />
         <div className={styles.infoBlock}>
