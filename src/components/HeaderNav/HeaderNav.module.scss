@@ -41,6 +41,7 @@
   opacity: 0;
   transform: translateX(-30px);
   animation: slideInNavItem 0.5s forwards;
+  cursor: pointer;
 }
 
 @keyframes slideInNavItem {

@@ -14,13 +14,13 @@
     background 0.2s,
     color 0.2s,
     transform 0.22s cubic-bezier(0.4, 0.2, 0.2, 1);
-  cursor: pointer;
   min-width: 220px;
   max-width: 320px;
   min-height: 340px;
   position: relative;
   height: 100%;
   will-change: transform;
+  cursor: default;
   &.bounce {
     animation: bounce-leave 0.38s cubic-bezier(0.4, 0.2, 0.2, 1);
   }
