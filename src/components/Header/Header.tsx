@@ -104,23 +104,31 @@ const Header = () => {
 
       {/* Mobile menu overlay & modal */}
       {menuVisible && (
-        <div
-          className={
-            menuClosing ? `${styles.menuModal} ${styles.menuModalFadeOut}` : styles.menuModal
-          }
-          role="dialog"
-          aria-modal="true"
-          aria-label={t('header.menuAria')}
-        >
-          <button
-            className={styles.menuClose}
-            aria-label={t('header.closeMenuAria')}
+        <>
+          <div
+            className={styles.menuOverlay}
             onClick={() => setMenuOpen(false)}
+            aria-hidden="true"
+          />
+          <div
+            className={
+              menuClosing ? `${styles.menuModal} ${styles.menuModalFadeOut}` : styles.menuModal
+            }
+            role="dialog"
+            aria-modal="true"
+            aria-label={t('header.menuAria')}
+            onClick={(e) => e.stopPropagation()}
           >
-            <FontAwesomeIcon icon={faTimes} size="sm" aria-hidden="true" />
-          </button>
-          <HeaderNav isMobile={true} onLinkClick={() => setMenuOpen(false)} />
-        </div>
+            <button
+              className={styles.menuClose}
+              aria-label={t('header.closeMenuAria')}
+              onClick={() => setMenuOpen(false)}
+            >
+              <FontAwesomeIcon icon={faTimes} size="sm" aria-hidden="true" />
+            </button>
+            <HeaderNav isMobile={true} onLinkClick={() => setMenuOpen(false)} />
+          </div>
+        </>
       )}
 
       {searchModalOpen && (

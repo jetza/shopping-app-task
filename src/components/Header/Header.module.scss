@@ -216,6 +216,13 @@
   border: 0;
 }
 
+.menuOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
 @media (max-width: 1100px) {
   .header__right .searchInput {
     width: 110px;
