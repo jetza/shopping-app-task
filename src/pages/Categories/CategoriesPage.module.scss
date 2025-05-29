@@ -1,4 +1,8 @@
 .categoriesPage {
   margin: 2.5rem auto;
-  padding: 0 6rem;
+  padding: 0 5rem;
+
+  @media (max-width: 600px) {
+    padding: 0 1rem;
+  }
 }

@@ -14,8 +14,3 @@ const fetchProductById = async (id: string): Promise<Product> => {
 };
 
 export { fetchAllProducts, fetchProductById };
-
-export const fetchProducts = async () => {
-  const response = await fetch(PRODUCT_API_URL);
-  return response.json();
-};

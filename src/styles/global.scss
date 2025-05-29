@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap');
 
-// CSS custom properties for theme colors
 :root {
   --color-gray-dark: #343e3d;
   --color-gray-mid: #607466;
@@ -81,4 +80,20 @@ body {
   background: var(--background);
   color: var(--text);
   font-family: var(--font-text);
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1.018);
+  }
+  40% {
+    transform: scale(0.985);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.bounce {
+  animation: bounce 0.38s cubic-bezier(0.4, 0.2, 0.2, 1);
 }

@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login } from '@/slices/authSlice';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
+import Toast from '../Toast/Toast';
 import styles from './LoginForm.module.scss';
 
 const schema = z.object({
@@ -16,6 +18,7 @@ type FormData = z.infer<typeof schema>;
 
 const LoginForm = () => {
   const { t } = useTranslation();
+  const [showError, setShowError] = useState(false);
 
   const {
     register,
@@ -33,7 +36,8 @@ const LoginForm = () => {
       dispatch(login(data.username));
       navigate('/products');
     } else {
-      alert(t('loginForm.wrongCredentials'));
+      setShowError(true);
+      setTimeout(() => setShowError(false), 2000);
     }
   };
 
@@ -45,6 +49,8 @@ const LoginForm = () => {
       autoComplete="on"
       role="form"
     >
+      {showError && <Toast message={t('loginForm.wrongCredentials')} error />}
+
       <div>
         <label htmlFor="username">{t('loginForm.username')}</label>
         <input

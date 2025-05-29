@@ -1,6 +1,8 @@
 import { useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { CHATBOT_URL } from '@/constants/urls';
+import { useTranslation } from 'react-i18next';
 import styles from './ChatbotModal.module.scss';
 
 interface ChatbotModalProps {
@@ -10,6 +12,7 @@ interface ChatbotModalProps {
 
 const ChatbotModal = ({ open, onClose }: ChatbotModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!open) return;
@@ -29,16 +32,12 @@ const ChatbotModal = ({ open, onClose }: ChatbotModalProps) => {
         ref={modalRef}
         role="dialog"
         aria-modal="true"
-        aria-label="Chatbot"
+        aria-label={t('chatbotAria')}
       >
-        <button className={styles.closeBtn} onClick={onClose} aria-label="Close chatbot">
+        <button className={styles.closeBtn} onClick={onClose} aria-label={t('closeChatbotAria')}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
-        <iframe
-          src="https://copilotstudio.microsoft.com/environments/Default-22426826-dc4c-401a-8d0e-7f97e64c0f99/bots/cr3d7_storeQA/webchat?__version__=2"
-          style={{ width: '100%', height: '100%' }}
-          title="Chatbot"
-        />
+        <iframe src={CHATBOT_URL} className={styles.chatbotIframe} title={t('chatbotTitle')} />
       </div>
     </div>
   );

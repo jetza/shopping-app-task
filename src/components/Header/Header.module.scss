@@ -203,40 +203,6 @@
   font-size: 2rem;
   z-index: 2;
 }
-.menuModalNav {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2.2rem;
-  a {
-    color: var(--menu-modal-color);
-    font-family: var(--font-title-light);
-    font-size: var(--font-size-lg);
-    text-decoration: none;
-    letter-spacing: 1px;
-    opacity: 0;
-    transform: translateX(-30px);
-    animation: slideInNavItem 0.5s forwards;
-    &:hover {
-      color: var(--accent);
-    }
-  }
-  a:nth-child(1) {
-    animation-delay: 0.08s;
-  }
-  a:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-  a:nth-child(3) {
-    animation-delay: 0.32s;
-  }
-  a:nth-child(4) {
-    animation-delay: 0.44s;
-  }
-  a:nth-child(5) {
-    animation-delay: 0.56s;
-  }
-}
 
 .sr-only {
   position: absolute;

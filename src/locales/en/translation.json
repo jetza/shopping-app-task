@@ -105,7 +105,7 @@
     "title": "Login to STORE"
   },
   "productsPage": {
-    "error": "Error fetching products."
+    "error": "Error loading products."
   },
   "logout": "Logout",
   "logoutModal": {
@@ -188,6 +188,9 @@
   },
   "aiAssistant": "AI Assistant",
   "openChatbotAria": "Open chatbot",
+  "chatbotAria": "Chatbot dialog",
+  "closeChatbotAria": "Close chatbot",
+  "chatbotTitle": "Chatbot",
   "category": {
     "prevProducts": "Previous products",
     "nextProducts": "Next products"

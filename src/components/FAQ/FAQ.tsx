@@ -3,13 +3,7 @@ import { useState } from 'react';
 import styles from './FAQ.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-
-const questions = [
-  { q: 'faq.q1', a: 'faq.a1' },
-  { q: 'faq.q2', a: 'faq.a2' },
-  { q: 'faq.q3', a: 'faq.a3' },
-  { q: 'faq.q4', a: 'faq.a4' },
-];
+import { questions } from './faqMock';
 
 const FAQ = () => {
   const { t } = useTranslation();

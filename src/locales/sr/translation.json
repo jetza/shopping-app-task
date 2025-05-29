@@ -92,7 +92,8 @@
     "headerAria": "Pretraga u zaglavlju",
     "headerPlaceholder": "Pretraži proizvode...",
     "openModalAria": "Otvori prozor za pretragu",
-    "noResults": "Nema proizvoda za '{{query}}'."
+    "noResults": "Nema proizvoda za '{{query}}'.",
+    "error": "Greška pri pretrazi."
   },
   "themeSwitcher": {
     "regionLabel": "Promena teme",
@@ -186,6 +187,9 @@
   },
   "aiAssistant": "AI asistent",
   "openChatbotAria": "Otvori četbot",
+  "chatbotAria": "Dijalog četbota",
+  "closeChatbotAria": "Zatvori četbot",
+  "chatbotTitle": "Četbot",
   "toast": {
     "addedToCart": "Proizvod dodat u korpu!",
     "removedFromCart": "Proizvod uklonjen iz korpe!",

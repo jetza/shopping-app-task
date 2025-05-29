@@ -4,6 +4,14 @@
 
 This is a modern e-commerce web application built with React and Redux, featuring full support for internationalization (i18n) and accessibility (a11y). Users can browse products, search, add items to the cart, switch language (English/Serbian), change theme (light/dark), and perform login/logout. The app is ready for deployment on Azure Static Web Apps.
 
+---
+
+**Bundler/Dev Server:**
+
+- **Vite** is used as the build tool and development server for this project. Vite provides extremely fast startup and hot module replacement (HMR) for a smooth development experience. It also optimizes and bundles the app for production, resulting in fast load times and efficient builds.
+
+---
+
 ## Features
 
 - Product catalog display
@@ -91,14 +99,6 @@ The app uses [Fake Store API](https://fakestoreapi.com/) for product data.
 - All texts (visible and accessibility) are translated and centralized in i18n files.
 - Language selection is saved in localStorage and automatically applied on every app load.
 - Accessibility is a priority: all elements have appropriate aria-labels and screen reader support.
-
-## Service Worker for Image Caching
-
-This app uses a Service Worker (`public/sw.js`) to cache images loaded from the API. This means that once an image is loaded, it will be served from the browser cache on subsequent visits, improving performance and reducing bandwidth usage.
-
-- The Service Worker is automatically registered in `src/main.tsx`.
-- If you update images on the server but keep the same URL, users may see the old image until the cache is refreshed. To force refresh, change the image URL or update the cache version in `sw.js`.
-- To disable this feature, remove the Service Worker registration code from `main.tsx` and/or delete `public/sw.js`.
 
 ## Chatbot Assistant (AI)
 

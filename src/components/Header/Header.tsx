@@ -123,13 +123,8 @@ const Header = () => {
         </div>
       )}
 
-      {/* Search modal for mobile */}
       {searchModalOpen && (
-        <Search
-          isMobile={true}
-          isModalOpen={searchModalOpen}
-          onCloseModal={() => setSearchModalOpen(false)}
-        />
+        <Search isModalOpen={searchModalOpen} onCloseModal={() => setSearchModalOpen(false)} />
       )}
 
       {/* User settings modal */}

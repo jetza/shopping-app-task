@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import { fetchProductById } from '@/api/productsAPI';
-import useFetch from '@/hooks/useFetch';
-import type { Product } from '@/types/product';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/slices/cartSlice';
 import { useCallback, useState } from 'react';
@@ -11,26 +10,34 @@ import { useTranslation } from 'react-i18next';
 import Toast from '@/components/Toast/Toast';
 
 const ProductDetailsPage = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams<{ id?: string }>();
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const [showNotif, setShowNotif] = useState(false);
 
-  const fetchProduct = useCallback(() => fetchProductById(id!), [id]);
-  const { data: product, loading, error } = useFetch<Product>(fetchProduct);
+  const {
+    data: product,
+    isLoading: loading,
+    isError: error,
+  } = useQuery({
+    queryKey: ['product', id],
+    queryFn: () => fetchProductById(id!),
+    enabled: !!id,
+  });
 
-  if (loading) return <Loader />;
-  if (error || !product) return <p>{t('productDetail.error')}</p>;
-
-  const handleAddToCart = () => {
+  const handleAddToCart = useCallback(() => {
+    if (!product) return;
     dispatch(addToCart(product));
     setShowNotif(true);
     setTimeout(() => setShowNotif(false), 2000);
-  };
+  }, [dispatch, product]);
+
+  if (loading) return <Loader />;
+  if (error || !product) return <Toast message={t('productDetail.error')} error />;
 
   return (
     <>
-      {showNotif ? <Toast message={t('toast.addedToCart')} /> : null}
+      {showNotif && <Toast message={t('toast.addedToCart')} />}
       <ProductDetail product={product} onAddToCart={handleAddToCart} />
     </>
   );

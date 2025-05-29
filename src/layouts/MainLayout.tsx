@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
+import styles from './MainLayout.module.scss';
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
@@ -8,9 +9,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '90px', paddingBottom: '56px', minHeight: 'calc(100vh - 44px)' }}>
-        {children}
-      </main>
+      <main className={styles.main}>{children}</main>
       {!hideFooter && <Footer />}
     </>
   );

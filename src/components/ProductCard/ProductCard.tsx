@@ -16,11 +16,11 @@ const ProductCard = ({ product, onDetails, onAddToCart }: ProductCardProps) => {
   const handleMouseLeave = () => {
     const el = cardRef.current;
     if (el) {
-      el.classList.remove(styles.bounce);
+      el.classList.remove('bounce');
       void el.offsetWidth;
-      el.classList.add(styles.bounce);
+      el.classList.add('bounce');
       setTimeout(() => {
-        el.classList.remove(styles.bounce);
+        el.classList.remove('bounce');
       }, 380);
     }
   };

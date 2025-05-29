@@ -101,7 +101,7 @@ const UserSettings = () => {
     <div className={styles.settingsWrapper}>
       {showInfoToast && <Toast message={t('toast.sendCode')} info />}
       <div className={styles.profileSection}>
-        <img src={state.avatar || '/assets/react.svg'} alt="Avatar" className={styles.avatar} />
+        <img src={state.avatar} alt="Avatar" className={styles.avatar} />
         <div className={styles.infoBlock}>
           <div className={styles.name}>
             {mockUser.firstName} {mockUser.lastName}

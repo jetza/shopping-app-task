@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState, AppDispatch } from '@/store/store';
-import { removeFromCart, clearCart } from '@/slices/cartSlice';
+import { increaseQuantity, decreaseQuantity, removeFromCart, clearCart } from '@/slices/cartSlice';
 import Cart from '@/components/Cart/Cart';
+import { useCallback } from 'react';
 
 const CartPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -9,18 +10,17 @@ const CartPage = () => {
 
   const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-  const increaseQuantity = (id: number) => dispatch({ type: 'cart/addToCart', payload: { id } });
-  const decreaseQuantity = (id: number) =>
-    dispatch({ type: 'cart/decreaseQuantity', payload: String(id) });
-  const remove = (id: string) => dispatch(removeFromCart(id));
-  const clear = () => dispatch(clearCart());
+  const increase = useCallback((id: number) => dispatch(increaseQuantity(id)), [dispatch]);
+  const decrease = useCallback((id: number) => dispatch(decreaseQuantity(id)), [dispatch]);
+  const remove = useCallback((id: number) => dispatch(removeFromCart(id)), [dispatch]);
+  const clear = useCallback(() => dispatch(clearCart()), [dispatch]);
 
   return (
     <Cart
       items={items}
       total={total}
-      increaseQuantity={increaseQuantity}
-      decreaseQuantity={decreaseQuantity}
+      increaseQuantity={increase}
+      decreaseQuantity={decrease}
       removeFromCart={remove}
       clearCart={clear}
     />

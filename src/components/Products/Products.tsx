@@ -33,14 +33,16 @@ const Products = ({ products, onProductDetails, onAddToCart }: ProductsProps) =>
     return () => observer.disconnect();
   }, [visibleCount, products.length]);
 
+  const noop = () => {};
+
   return (
     <div className={styles.productsGrid}>
       {products.slice(0, visibleCount).map((product) => (
         <ProductCard
           key={product.id}
           product={product}
-          onDetails={onProductDetails || (() => {})}
-          onAddToCart={onAddToCart || (() => {})}
+          onDetails={onProductDetails || noop}
+          onAddToCart={onAddToCart || noop}
         />
       ))}
       {visibleCount < products.length && <div ref={loaderRef} style={{ height: 1 }} />}

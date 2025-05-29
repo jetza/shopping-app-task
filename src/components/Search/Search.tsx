@@ -2,25 +2,18 @@ import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './Search.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { useProductsQuery } from '@/hooks/useProductsQuery';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useProductsQuery } from '@/api/useProductsQuery';
 import { useNavigate } from 'react-router-dom';
+import Loader from '@/components/Loader/Loader';
 
 interface SearchProps {
-  isMobile?: boolean;
-  onOpenModal?: () => void;
   onCloseModal?: () => void;
   isModalOpen?: boolean;
   onFocus?: () => void;
 }
 
-const Search = ({
-  isMobile = false,
-  onOpenModal,
-  onCloseModal,
-  isModalOpen,
-  onFocus,
-}: SearchProps) => {
+const Search = ({ onCloseModal, isModalOpen, onFocus }: SearchProps) => {
   const { t } = useTranslation();
   const [input, setInput] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
@@ -28,10 +21,10 @@ const Search = ({
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isMobile && isModalOpen) {
+    if (isModalOpen) {
       inputRef.current?.focus();
     }
-  }, [isMobile, isModalOpen]);
+  }, [isModalOpen]);
 
   const filteredProducts =
     input.length >= 3
@@ -39,7 +32,7 @@ const Search = ({
         []
       : [];
 
-  if (isMobile && isModalOpen) {
+  if (isModalOpen) {
     return (
       <div
         className={styles.searchModalOverlay}
@@ -88,9 +81,8 @@ const Search = ({
               ref={inputRef}
             />
           </form>
-          {isLoading && <div className={styles.searchLoading}>Loading...</div>}
-          {isError && <div className={styles.searchError}>Greška pri učitavanju proizvoda.</div>}
-          {/* Prikaz rezultata pretrage */}
+          {isLoading && <Loader />}
+          {isError && <div className={styles.searchError}>{t('search.error')}</div>}
           <div className={styles.searchResults}>
             {input && filteredProducts.length === 0 && (
               <div className={styles.noResults}>{t('search.noResults', { query: input })}</div>
@@ -115,26 +107,7 @@ const Search = ({
     );
   }
 
-  return (
-    <div className={styles.header__search} role="search" aria-label={t('search.headerAria')}>
-      <input
-        type="text"
-        placeholder={t('search.headerPlaceholder')}
-        className={styles.searchInput}
-        aria-label={t('search.inputAria')}
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        onFocus={onFocus}
-      />
-      <button
-        className={styles.searchIconBtn}
-        aria-label={t('search.openModalAria')}
-        onClick={onOpenModal}
-      >
-        <FontAwesomeIcon icon={faSearch} aria-hidden="true" />
-      </button>
-    </div>
-  );
+  return null;
 };
 
 export default Search;

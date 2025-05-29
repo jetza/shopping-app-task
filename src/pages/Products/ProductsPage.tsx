@@ -1,7 +1,5 @@
-import useFetch from '@/hooks/useFetch';
-import { fetchAllProducts } from '@/api/productsAPI';
+import { useProductsQuery } from '@/api/useProductsQuery';
 import type { Product } from '@/types/product';
-import './ProductsPage.module.scss';
 import Products from '@/components/Products/Products';
 import { useNavigate } from 'react-router-dom';
 import Loader from '@/components/Loader/Loader';
@@ -9,29 +7,35 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/slices/cartSlice';
 import Toast from '@/components/Toast/Toast';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 const ProductsPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { data: products, loading, error } = useFetch<Product[]>(fetchAllProducts);
+  const { data: products, isLoading: loading, isError: error } = useProductsQuery();
   const [showNotif, setShowNotif] = useState(false);
 
+  const handleProductDetails = useCallback(
+    (id: string | number) => {
+      navigate(`/products/${id}`);
+    },
+    [navigate],
+  );
+
+  const handleAddToCart = useCallback(
+    (product: Product) => {
+      dispatch(addToCart(product));
+      setShowNotif(true);
+      setTimeout(() => setShowNotif(false), 2000);
+    },
+    [dispatch],
+  );
+
   if (loading) return <Loader />;
-  if (error) return <p>{t('productsPage.error')}</p>;
+  if (error) return <Toast message={t('productsPage.error')} error />;
 
   const mappedProducts = products || [];
-
-  const handleProductDetails = (id: string | number) => {
-    navigate(`/products/${id}`);
-  };
-
-  const handleAddToCart = (product: Product) => {
-    dispatch(addToCart(product));
-    setShowNotif(true);
-    setTimeout(() => setShowNotif(false), 2000);
-  };
 
   return (
     <div>

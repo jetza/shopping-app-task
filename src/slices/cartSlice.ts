@@ -26,21 +26,21 @@ const cartSlice = createSlice({
         state.items.push({ ...action.payload, quantity: 1 });
       }
     },
-    removeFromCart: (state, action: PayloadAction<string>) => {
-      state.items = state.items.filter((item) => String(item.id) !== action.payload);
+    removeFromCart: (state, action: PayloadAction<number>) => {
+      state.items = state.items.filter((item) => item.id !== action.payload);
     },
-    increaseQuantity: (state, action: PayloadAction<string>) => {
-      const item = state.items.find((item) => String(item.id) === action.payload);
+    increaseQuantity: (state, action: PayloadAction<number>) => {
+      const item = state.items.find((item) => item.id === action.payload);
       if (item) {
         item.quantity += 1;
       }
     },
-    decreaseQuantity: (state, action: PayloadAction<string>) => {
-      const item = state.items.find((item) => String(item.id) === action.payload);
+    decreaseQuantity: (state, action: PayloadAction<number>) => {
+      const item = state.items.find((item) => item.id === action.payload);
       if (item) {
         item.quantity -= 1;
         if (item.quantity <= 0) {
-          state.items = state.items.filter((i) => String(i.id) !== action.payload);
+          state.items = state.items.filter((i) => i.id !== action.payload);
         }
       }
     },

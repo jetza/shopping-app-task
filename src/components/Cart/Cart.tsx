@@ -2,16 +2,18 @@ import { useTranslation } from 'react-i18next';
 import styles from './Cart.module.scss';
 import type { CartItem } from '@/slices/cartSlice';
 import Toast from '@/components/Toast/Toast';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface CartProps {
   items: CartItem[];
   total: number;
   increaseQuantity: (id: number) => void;
   decreaseQuantity: (id: number) => void;
-  removeFromCart: (id: string) => void;
+  removeFromCart: (id: number) => void;
   clearCart: () => void;
 }
+
+type ToastType = 'add' | 'remove' | 'clear' | null;
 
 const Cart = ({
   items,
@@ -22,67 +24,52 @@ const Cart = ({
   clearCart,
 }: CartProps) => {
   const { t } = useTranslation();
-  const [showNotif, setShowNotif] = useState(false);
-  const [showRemoveNotif, setShowRemoveNotif] = useState(false);
-  const [emptyCartToast, setEmptyCartToast] = useState(false);
-  const [showInfoToast, setShowInfoToast] = useState(false);
+  const [toast, setToast] = useState<ToastType>(null);
+
+  useEffect(() => {
+    if (toast) {
+      const timer = setTimeout(() => setToast(null), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [toast]);
 
   if (items.length === 0) {
-    if (showRemoveNotif || emptyCartToast || showInfoToast) {
-      if (emptyCartToast) {
-        setTimeout(() => setEmptyCartToast(false), 2000);
-      }
-      if (showInfoToast) {
-        setTimeout(() => setShowInfoToast(false), 2000);
-      }
-      return (
-        <div>
-          {showRemoveNotif ? <Toast message={t('toast.removedFromCart')} error /> : null}
-          {showInfoToast ? <Toast message={t('toast.cartCleared')} info /> : null}
-          <p className={styles.cartTitle} role="status" aria-live="polite">
-            {t('cart.empty')}
-          </p>
-        </div>
-      );
-    }
     return (
-      <p className={styles.cartTitle} role="status" aria-live="polite">
-        {t('cart.empty')}
-      </p>
+      <div>
+        {toast === 'remove' && <Toast message={t('toast.removedFromCart')} error />}
+        {toast === 'clear' && <Toast message={t('toast.cartCleared')} info />}
+        <p className={styles.cartTitle} role="status" aria-live="polite">
+          {t('cart.empty')}
+        </p>
+      </div>
     );
   }
 
   const handleIncrease = (id: number) => {
     increaseQuantity(id);
-    setShowNotif(true);
-    setTimeout(() => setShowNotif(false), 2000);
+    setToast('add');
   };
 
   const handleDecrease = (id: number) => {
     decreaseQuantity(id);
-    setShowRemoveNotif(true);
-    setTimeout(() => setShowRemoveNotif(false), 2000);
+    setToast('remove');
   };
 
-  const handleRemove = (id: string) => {
-    setShowRemoveNotif(true);
-    setEmptyCartToast(true);
-    setTimeout(() => setShowRemoveNotif(false), 2000);
-    setTimeout(() => setEmptyCartToast(false), 2000);
+  const handleRemove = (id: number) => {
     removeFromCart(id);
+    setToast('remove');
   };
 
   const handleClearCart = () => {
     clearCart();
-    setShowInfoToast(true);
-    setTimeout(() => setShowInfoToast(false), 2000);
+    setToast('clear');
   };
 
   return (
     <div className={styles.cartContainer} role="region" aria-label={t('cart.regionLabel')}>
-      {showNotif ? <Toast message={t('toast.addedToCart')} /> : null}
-      {showRemoveNotif ? <Toast message={t('toast.removedFromCart')} error /> : null}
-      {showInfoToast ? <Toast message={t('toast.cartCleared')} info /> : null}
+      {toast === 'add' && <Toast message={t('toast.addedToCart')} />}
+      {toast === 'remove' && <Toast message={t('toast.removedFromCart')} error />}
+      {toast === 'clear' && <Toast message={t('toast.cartCleared')} info />}
       <h2 className={styles.cartTitle} tabIndex={0} aria-label={t('cart.title')}>
         {t('cart.title')}
       </h2>
@@ -137,7 +124,7 @@ const Cart = ({
                 +
               </button>
               <button
-                onClick={() => handleRemove(String(item.id))}
+                onClick={() => handleRemove(item.id)}
                 aria-label={t('cart.remove', { title: item.title })}
               >
                 {t('cart.removeBtn')}

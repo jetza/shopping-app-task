@@ -12,12 +12,7 @@ const ComingSoon = () => {
     >
       <h1 className={styles.comingSoonTitle}>{t('comingSoon.title')}</h1>
       <p className={styles.comingSoonText}>{t('comingSoon.text')}</p>
-      <Link
-        to="/products"
-        className={styles.comingSoonBackBtn}
-        style={{ color: 'var(--accent)' }}
-        aria-label={t('notFound.back')}
-      >
+      <Link to="/products" className={styles.comingSoonBackBtn} aria-label={t('notFound.back')}>
         {t('notFound.back')}
       </Link>
     </div>

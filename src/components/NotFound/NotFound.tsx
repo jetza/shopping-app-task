@@ -1,4 +1,6 @@
 import { useTranslation } from 'react-i18next';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTree, faCrow, faFrog } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './NotFound.module.scss';
 
@@ -19,7 +21,9 @@ const NotFound = () => {
           {t('notFound.text')}
         </p>
         <div className={styles.notFoundEmoji} aria-hidden="true">
-          🌴🦜🦎
+          <FontAwesomeIcon icon={faTree} size="lg" className={styles.iconYellow} />
+          <FontAwesomeIcon icon={faCrow} size="lg" className={styles.iconBlue} />
+          <FontAwesomeIcon icon={faFrog} size="lg" className={styles.iconPink} />
         </div>
         <p className={styles.notFoundHint}>
           {t('notFound.hint')}
