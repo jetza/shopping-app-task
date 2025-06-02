@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
+import { useDebounce } from 'use-debounce';
 import { useTranslation } from 'react-i18next';
 import styles from './Search.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,6 +17,7 @@ interface SearchProps {
 const Search = ({ onCloseModal, isModalOpen, onFocus }: SearchProps) => {
   const { t } = useTranslation();
   const [input, setInput] = useState('');
+  const [debouncedInput] = useDebounce(input, 300);
   const inputRef = useRef<HTMLInputElement>(null);
   const { data: products, isLoading, isError } = useProductsQuery();
   const navigate = useNavigate();
@@ -26,11 +28,14 @@ const Search = ({ onCloseModal, isModalOpen, onFocus }: SearchProps) => {
     }
   }, [isModalOpen]);
 
-  const filteredProducts =
-    input.length >= 3
-      ? products?.filter((product) => product.title.toLowerCase().includes(input.toLowerCase())) ||
-        []
-      : [];
+  const filteredProducts = useMemo(() => {
+    if (debouncedInput.length < 3) return [];
+    return (
+      products?.filter((product) =>
+        product.title.toLowerCase().includes(debouncedInput.toLowerCase()),
+      ) || []
+    );
+  }, [debouncedInput, products]);
 
   if (isModalOpen) {
     return (

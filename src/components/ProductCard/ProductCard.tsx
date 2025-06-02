@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './ProductCard.module.scss';
 import type { Product } from '../../types/product';
+import { convertUsdToRsd } from '@/utils/currency';
+import { useBounceAnimation } from '@/hooks/useBounceAnimation';
 
 interface ProductCardProps {
   product: Product;
@@ -10,20 +12,9 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, onDetails, onAddToCart }: ProductCardProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const cardRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseLeave = () => {
-    const el = cardRef.current;
-    if (el) {
-      el.classList.remove('bounce');
-      void el.offsetWidth;
-      el.classList.add('bounce');
-      setTimeout(() => {
-        el.classList.remove('bounce');
-      }, 380);
-    }
-  };
+  const handleMouseLeave = useBounceAnimation(cardRef);
 
   const isSingleLineDescription =
     product.description && product.description.length < 50 && !product.description.includes('\n');
@@ -53,9 +44,15 @@ const ProductCard = ({ product, onDetails, onAddToCart }: ProductCardProps) => {
           </h2>
           <p
             className={styles.productPrice}
-            aria-label={t('productCard.priceAria', { price: product.price.toFixed(2) })}
+            aria-label={
+              i18n.language === 'sr'
+                ? t('productCard.priceAria', { price: convertUsdToRsd(product.price) })
+                : t('productCard.priceAria', { price: product.price.toFixed(2) })
+            }
           >
-            {t('productCard.price', { price: product.price.toFixed(2) })}
+            {i18n.language === 'sr'
+              ? `${convertUsdToRsd(product.price)} RSD`
+              : `$${product.price.toFixed(2)} USD`}
           </p>
           {product.description && (
             <p

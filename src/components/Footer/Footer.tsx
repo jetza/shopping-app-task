@@ -5,25 +5,15 @@ import { faCopyright, faRobot } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 import { useRef, useState, Suspense, lazy } from 'react';
 import Loader from '@/components/Loader/Loader';
+import { useBounceAnimation } from '@/hooks/useBounceAnimation';
 
 const ChatbotModal = lazy(() => import('@/components/ChatbotModal/ChatbotModal'));
 
 const Footer = () => {
   const { t } = useTranslation();
   const robotRef = useRef<HTMLSpanElement>(null);
+  const handleMouseLeave = useBounceAnimation(robotRef, styles.bounce);
   const [chatbotOpen, setChatbotOpen] = useState(false);
-
-  const handleMouseLeave = () => {
-    const el = robotRef.current;
-    if (el) {
-      el.classList.remove(styles.bounce);
-      void el.offsetWidth;
-      el.classList.add(styles.bounce);
-      setTimeout(() => {
-        el.classList.remove(styles.bounce);
-      }, 380);
-    }
-  };
 
   const handleRobotClick = () => setChatbotOpen(true);
   const handleChatbotClose = () => setChatbotOpen(false);

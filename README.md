@@ -38,6 +38,20 @@ This is a modern e-commerce web application built with React and Redux, featurin
   - Change password with security code (shows orange toast when code is sent)
   - Add credit card (with validation)
 - **All unused code, classes, and translations cleaned up**
+- **Advanced optimizations (2025):**
+  - All product loading uses React Query with caching and persistor for fast and offline-ready experience
+  - Product search uses debounce (use-debounce hook) to reduce API calls
+  - Memoization (React.memo, useMemo, useCallback) for Cart, ProductCard, Search, Products
+  - Zod validation for all forms (e.g. Contact) with translated error messages and accessibility
+  - Currency conversion: prices shown in RSD or USD depending on language, with automatic conversion (Cart, ProductCard, ProductDetail)
+  - Centralized bounce animation via custom hook (useBounceAnimation) on cards, robot icon, and footer
+  - Loader appears each time new products are loaded while scrolling (infinite scroll)
+  - Chatbot modal: auto-focus, closes on outside click/Escape/close button, fully accessible and translated
+  - All interactive components have aria-label, role, keyboard support; error messages are screen reader friendly
+  - All texts, error messages, and buttons are translated (i18n) for Serbian and English, including dynamic messages
+  - Price and total in Cart, ProductCard, ProductDetail always match selected language
+  - Product grid uses IntersectionObserver and loader sentinel for infinite scroll
+  - Modern UI/UX: animations, grid layout, accessibility, and internationalization are a priority
 
 ## Used Libraries
 
@@ -51,6 +65,7 @@ This is a modern e-commerce web application built with React and Redux, featurin
 - **FontAwesome** – icons
 - **Sass (SCSS)** – styling
 - **@tanstack/react-query** – data fetching and caching
+- **use-debounce** – debounce for search
 
 ## Running the Application
 
@@ -89,6 +104,13 @@ More info: [Azure Static Web Apps documentation](https://learn.microsoft.com/en-
 - `src/api` – API calls
 - `src/hooks` – custom React hooks
 - `src/styles` – global and modular SCSS
+- `src/constants` – app constants (e.g. URLs)
+- `src/contexts` – React context providers and hooks
+- `src/layouts` – layout components (e.g. MainLayout)
+- `src/routes` – app route definitions
+- `src/store` – Redux store configuration
+- `src/types` – TypeScript types and interfaces
+- `src/utils` – utility/helper functions
 
 ## API
 

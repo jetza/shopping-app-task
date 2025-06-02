@@ -1,18 +1,52 @@
 import { useTranslation } from 'react-i18next';
 import styles from './Contact.module.scss';
+import { z } from 'zod';
+import { useState } from 'react';
 
 const EMAIL = 'admin@store.com';
 const PHONE = '+381 11 123 4567';
 
+const contactSchema = z.object({
+  name: z.string().min(2, 'contact.errorName'),
+  email: z.string().email('contact.errorEmail'),
+  message: z.string().min(5, 'contact.errorMessage'),
+});
+
 const Contact = () => {
   const { t } = useTranslation();
+  const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
+  const [formValues, setFormValues] = useState({ name: 'Admin', email: EMAIL, message: '' });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormValues((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => {
+      const newErrors = { ...prev };
+      if (name === 'email') {
+        const emailValid = z.string().email().safeParse(value).success;
+        if (emailValid) {
+          delete newErrors.email;
+        }
+      } else {
+        delete newErrors[name as 'name' | 'message'];
+      }
+      return newErrors;
+    });
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    const name = (form.elements.namedItem('name') as HTMLInputElement)?.value || '';
-    const email = (form.elements.namedItem('email') as HTMLInputElement)?.value || '';
-    const message = (form.elements.namedItem('message') as HTMLTextAreaElement)?.value || '';
+    const { name, email, message } = formValues;
+    const result = contactSchema.safeParse({ name, email, message });
+    if (!result.success) {
+      const fieldErrors: { name?: string; email?: string; message?: string } = {};
+      result.error.errors.forEach((err) => {
+        if (err.path[0]) fieldErrors[err.path[0] as 'name' | 'email' | 'message'] = err.message;
+      });
+      setErrors(fieldErrors);
+      return;
+    }
+    setErrors({});
     const mailto = `mailto:${EMAIL}?subject=Contact%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\nMessage: ${message}`)}`;
     window.location.href = mailto;
   };
@@ -34,7 +68,7 @@ const Contact = () => {
           </li>
         </ul>
         <p>{t('contact.formInfo')}</p>
-        <form className={styles.contactForm} onSubmit={handleSubmit}>
+        <form className={styles.contactForm} onSubmit={handleSubmit} noValidate>
           <label htmlFor="name">{t('contact.name')}</label>
           <input
             id="name"
@@ -42,8 +76,10 @@ const Contact = () => {
             type="text"
             required
             className={styles.contactInput}
-            defaultValue="Admin"
+            value={formValues.name}
+            onChange={handleChange}
           />
+          {errors.name && <span className={styles.error}>{t(errors.name)}</span>}
           <label htmlFor="email">{t('contact.email')}</label>
           <input
             id="email"
@@ -51,8 +87,10 @@ const Contact = () => {
             type="email"
             required
             className={styles.contactInput}
-            defaultValue={EMAIL}
+            value={formValues.email}
+            onChange={handleChange}
           />
+          {errors.email && <span className={styles.error}>{t(errors.email)}</span>}
           <label htmlFor="message">{t('contact.message')}</label>
           <textarea
             id="message"
@@ -60,7 +98,10 @@ const Contact = () => {
             required
             rows={4}
             className={styles.contactTextarea}
+            value={formValues.message}
+            onChange={handleChange}
           />
+          {errors.message && <span className={styles.error}>{t(errors.message)}</span>}
           <button type="submit" className={styles.contactSubmitBtn}>
             {t('contact.submit')}
           </button>

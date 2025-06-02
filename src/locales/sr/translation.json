@@ -151,7 +151,10 @@
     "email": "Vaš email",
     "message": "Poruka",
     "send": "Pošalji",
-    "submit": "Pošalji"
+    "submit": "Pošalji",
+    "errorName": "Ime je obavezno (min 2 slova)",
+    "errorEmail": "Unesite ispravan email",
+    "errorMessage": "Poruka je obavezna (min 5 karaktera)"
   },
   "userSettings": {
     "title": "Podešavanja naloga",

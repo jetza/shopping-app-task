@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import styles from './ProductDetail.module.scss';
 import type { Product } from '@/types/product';
+import { convertUsdToRsd } from '@/utils/currency';
 
 interface ProductDetailProps {
   product: Product;
@@ -9,7 +10,7 @@ interface ProductDetailProps {
 }
 
 const ProductDetail = ({ product, onAddToCart }: ProductDetailProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   if (!product) return null;
   return (
     <section className={styles.productDetail} aria-label={product.title}>
@@ -25,9 +26,15 @@ const ProductDetail = ({ product, onAddToCart }: ProductDetailProps) => {
         <h1 className={styles.productDetailTitle}>{product.title}</h1>
         <p
           className={styles.productDetailPrice}
-          aria-label={t('productCard.priceAria', { price: product.price })}
+          aria-label={
+            i18n.language === 'sr'
+              ? t('productCard.priceAria', { price: convertUsdToRsd(product.price) })
+              : t('productCard.priceAria', { price: product.price.toFixed(2) })
+          }
         >
-          {t('productCard.price', { price: product.price })}
+          {i18n.language === 'sr'
+            ? `${convertUsdToRsd(product.price)} RSD`
+            : `$${product.price.toFixed(2)} USD`}
         </p>
         <p className={styles.productDetailCategory}>
           <strong>{t('productDetail.category')}:</strong> {product.category}

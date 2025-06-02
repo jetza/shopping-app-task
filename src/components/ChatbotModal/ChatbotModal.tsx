@@ -20,16 +20,26 @@ const ChatbotModal = ({ open, onClose }: ChatbotModalProps) => {
       if (e.key === 'Escape') onClose();
     };
     document.addEventListener('keydown', handleKeyDown);
+    if (modalRef.current) {
+      modalRef.current.focus();
+    }
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [open, onClose]);
 
   if (!open) return null;
 
   return (
-    <div className={styles.overlay}>
+    <div
+      className={styles.overlay}
+      style={{ pointerEvents: 'auto' }}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
       <div
         className={styles.modal}
         ref={modalRef}
+        tabIndex={-1}
         role="dialog"
         aria-modal="true"
         aria-label={t('chatbotAria')}

@@ -2,7 +2,8 @@ import { useTranslation } from 'react-i18next';
 import styles from './Cart.module.scss';
 import type { CartItem } from '@/slices/cartSlice';
 import Toast from '@/components/Toast/Toast';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
+import { convertUsdToRsd } from '@/utils/currency';
 
 interface CartProps {
   items: CartItem[];
@@ -23,7 +24,7 @@ const Cart = ({
   removeFromCart,
   clearCart,
 }: CartProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [toast, setToast] = useState<ToastType>(null);
 
   useEffect(() => {
@@ -82,7 +83,7 @@ const Cart = ({
             aria-label={t('cart.itemLabel', {
               title: item.title,
               quantity: item.quantity,
-              price: item.price,
+              price: i18n.language === 'sr' ? convertUsdToRsd(item.price) : item.price,
             })}
           >
             <img
@@ -95,9 +96,13 @@ const Cart = ({
               <span className={styles.cartItemTitle}>{item.title}</span>
               <span
                 className={styles.cartItemPrice}
-                aria-label={t('cart.price', { price: item.price })}
+                aria-label={t('cart.price', {
+                  price: i18n.language === 'sr' ? convertUsdToRsd(item.price) : item.price,
+                })}
               >
-                {t('cart.price', { price: item.price })}
+                {i18n.language === 'sr'
+                  ? `${convertUsdToRsd(item.price)} RSD`
+                  : `$${item.price.toFixed(2)} USD`}
               </span>
               <span
                 className={styles.cartItemQuantity}
@@ -135,9 +140,13 @@ const Cart = ({
       </ul>
       <h3
         className={styles.cartTotal}
-        aria-label={t('cart.totalLabel', { total: total.toFixed(2) })}
+        aria-label={t('cart.totalLabel', {
+          total: i18n.language === 'sr' ? convertUsdToRsd(total) : total.toFixed(2),
+        })}
       >
-        {t('cart.total', { total: total.toFixed(2) })}
+        {i18n.language === 'sr'
+          ? t('cart.total', { total: `${convertUsdToRsd(total)} RSD` })
+          : t('cart.total', { total: `$${total.toFixed(2)} USD` })}
       </h3>
       <div className={styles.cartActionsRow}>
         <button
@@ -159,4 +168,4 @@ const Cart = ({
   );
 };
 
-export default Cart;
+export default memo(Cart);

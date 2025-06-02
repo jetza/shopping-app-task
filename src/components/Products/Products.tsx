@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import ProductCard from '@/components/ProductCard/ProductCard';
+import Loader from '@/components/Loader/Loader';
 import type { Product } from '@/types/product';
 import styles from './Products.module.scss';
 
@@ -13,6 +14,7 @@ const BATCH_SIZE = 8;
 
 const Products = ({ products, onProductDetails, onAddToCart }: ProductsProps) => {
   const [visibleCount, setVisibleCount] = useState(BATCH_SIZE);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const loaderRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -24,7 +26,14 @@ const Products = ({ products, onProductDetails, onAddToCart }: ProductsProps) =>
     const observer = new window.IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          setVisibleCount((prev) => Math.min(prev + BATCH_SIZE, products.length));
+          setIsLoadingMore(true);
+          setTimeout(() => {
+            setVisibleCount((prev) => {
+              const next = Math.min(prev + BATCH_SIZE, products.length);
+              return next;
+            });
+            setIsLoadingMore(false);
+          }, 200);
         }
       },
       { threshold: 1 },
@@ -45,7 +54,8 @@ const Products = ({ products, onProductDetails, onAddToCart }: ProductsProps) =>
           onAddToCart={onAddToCart || noop}
         />
       ))}
-      {visibleCount < products.length && <div ref={loaderRef} style={{ height: 1 }} />}
+      {visibleCount < products.length &&
+        (isLoadingMore ? <Loader /> : <div ref={loaderRef} style={{ height: 1 }} />)}
     </div>
   );
 };
